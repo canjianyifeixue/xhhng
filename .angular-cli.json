@@ -1,0 +1,63 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "project": {
+        "name": "mng"
+    },
+    "apps": [{
+        "root": "src",
+        "outDir": "dist",
+        "assets": [
+            "assets"
+        ],
+        "index": "index.html",
+        "main": "main.ts",
+        "polyfills": "polyfills.ts",
+        "test": "test.ts",
+        "tsconfig": "tsconfig.app.json",
+        "testTsconfig": "tsconfig.spec.json",
+        "prefix": "app",
+        "styles": [
+            "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "../node_modules/@covalent/core/common/platform.scss",
+            "../node_modules/xhhng/index.scss",
+            "scss/index.scss"
+        ],
+        "scripts": [
+            "../node_modules/jquery/dist/jquery.min.js",
+            "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+            "../node_modules/summernote/dist/summernote-bs4.min.js",
+            "../node_modules/summernote/dist/lang/summernote-zh-CN.min.js",
+            "../node_modules/hammerjs/hammer.min.js",
+            "../node_modules/showdown/dist/showdown.min.js"
+        ],
+        "environmentSource": "environments/environment.ts",
+        "environments": {
+            "dev": "environments/environment.ts",
+            "prod": "environments/environment.prod.ts"
+        }
+    }],
+    "e2e": {
+        "protractor": {
+            "config": "./protractor.conf.js"
+        }
+    },
+    "lint": [{
+            "project": "src/tsconfig.app.json"
+        },
+        {
+            "project": "src/tsconfig.spec.json"
+        },
+        {
+            "project": "e2e/tsconfig.e2e.json"
+        }
+    ],
+    "test": {
+        "karma": {
+            "config": "./karma.conf.js"
+        }
+    },
+    "defaults": {
+        "styleExt": "scss",
+        "component": {}
+    }
+}
