@@ -1,0 +1,200 @@
+<div layout="row" layout-margin layout-align="start start">
+  <div flex="20" layout="column" layout-align="start start">
+    <div flex class="card-head" layout="row" layout-align="start center">
+      <div class="block"></div>
+      <div class="push-sm title">
+        控件
+      </div>
+    </div>
+    <div flex class="card-body">
+      <mat-nav-list [dragula]="bagName" [dragulaModel]="controls" [dragulaOptions]="dragOpt">
+        <mat-list-item *ngFor="let control of controls" [id]="control.name">
+          <mat-icon>play_arrow</mat-icon>
+          <span>{{control.label}}</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </div>
+  <div flex="60" layout="column" layout-align="start start">
+    <div flex class="card-head" layout="row" layout-align="start center">
+      <div class="block"></div>
+      <div class="push-sm title">
+        表单面板
+      </div>
+    </div>
+    <div flex class="card-body">
+      <div style="min-height:300px" layout="row" layout-wrap layout-margin layout-align="start center" [dragula]="bagName" [dragulaOptions]="dragOpt"
+        [dragulaModel]="elements">
+        <div *ngFor="let element of elements" [ngSwitch]="element.type" [attr.flex]="element.flex" (click)="elementClick(element)"
+          [attr.name]="element.name">
+          <mat-form-field *ngSwitchCase="'number'">
+            <input matInput [(ngModel)]="element.default" [placeholder]="element.label" [type]="element.type" [required]="element.required"
+              [min]="element.min" [max]="element.max" [pattern]="element.pattern" [maxlength]="element.maxlength">
+            <mat-hint *ngIf="element.maxlength" align="end">{{element.default?.length}} / {{element.maxlength}}</mat-hint>
+          </mat-form-field>
+          <mat-form-field *ngSwitchCase="'input'">
+            <input matInput [(ngModel)]="element.default" [placeholder]="element.label" [type]="element.type" [required]="element.required"
+              [min]="element.min" [max]="element.max" [pattern]="element.pattern" [maxlength]="element.maxlength">
+            <mat-hint *ngIf="element.maxlength" align="end">{{element.default?.length}} / {{element.maxlength}}</mat-hint>
+          </mat-form-field>
+          <mat-form-field *ngSwitchCase="'password'">
+            <input matInput [(ngModel)]="element.default" [placeholder]="element.label" [type]="element.type" [required]="element.required"
+              [min]="element.min" [max]="element.max" [pattern]="element.pattern" [maxlength]="element.maxlength">
+            <mat-hint *ngIf="element.maxlength" align="end">{{element.default?.length}} / {{element.maxlength}}</mat-hint>
+          </mat-form-field>
+          <mat-form-field *ngSwitchCase="'textarea'">
+            <textarea matInput rows="4" [(ngModel)]="element.default" [placeholder]="element.label" [required]="element.required" [pattern]="element.pattern"
+              [maxlength]="element.maxlength"></textarea>
+            <mat-hint *ngIf="element.maxlength" align="end">{{element.default?.length}} / {{element.maxlength}}</mat-hint>
+          </mat-form-field>
+          <div *ngSwitchCase="'slider'" class="relative push-top">
+            <label class="mat-input-placeholder mat-float td-slider-label" [class.mat-focused]="slider._isActive"> {{element.label}}
+              <span *ngIf="element.required" class="mat-placeholder-required">*</span>
+            </label>
+            <mat-slider #slider [(ngModel)]="element.default" thumbLabel tickInterval="auto" [required]="element.required" [min]="element.min"
+              [max]="element.max" [maxlength]="element.maxlength">
+            </mat-slider>
+          </div>
+          <mat-form-field *ngSwitchCase="'date-picker'">
+            <input matInput readonly [(ngModel)]="element.default" [placeholder]="element.label+' (预览查看)'" type="text" [required]="element.required">
+          </mat-form-field>
+          <div *ngSwitchCase="'slide-toggle'">
+            <mat-slide-toggle [(ngModel)]="element.default" [required]="element.required">
+              {{element.label}}
+            </mat-slide-toggle>
+          </div>
+          <div *ngSwitchCase="'checkbox'">
+            <mat-checkbox [(ngModel)]="element.default" [required]="element.required">
+              {{element.label}}
+            </mat-checkbox>
+          </div>
+          <div *ngSwitchCase="'checkbox-group'">
+            <label>{{element.label+' (预览查看)'}}</label>
+          </div>
+          <mat-form-field *ngSwitchCase="'select'">
+            <input matInput readonly [(ngModel)]="element.default" [placeholder]="element.label+' (预览查看)'" [type]="element.type" [required]="element.required">
+          </mat-form-field>
+          <mat-form-field *ngSwitchCase="'chips'">
+            <input matInput readonly [(ngModel)]="element.default" [placeholder]="element.label+' (预览查看)'" [type]="element.type" [required]="element.required">
+          </mat-form-field>
+          <div *ngSwitchCase="'radio'">
+            <label>{{element.label+' (预览查看)'}}</label>
+          </div>
+          <mat-form-field *ngSwitchCase="'dialog-select'">
+            <input matInput readonly [(ngModel)]="element.default" [placeholder]="element.label+' (预览查看)'" [type]="element.type" [required]="element.required">
+          </mat-form-field>
+          <mat-form-field *ngSwitchCase="'data-form'">
+            <input matInput readonly [(ngModel)]="element.default" [placeholder]="element.label+' (预览查看)'" [type]="element.type" [required]="element.required">
+          </mat-form-field>
+          <mat-form-field *ngSwitchCase="'file'">
+            <input matInput readonly [(ngModel)]="element.default" [placeholder]="element.label+' (预览查看)'" type="text" [required]="element.required">
+          </mat-form-field>
+          <mat-form-field *ngSwitchCase="'cascad-select'">
+            <input matInput readonly [(ngModel)]="element.default" [placeholder]="element.label+' (预览查看)'" type="text" [required]="element.required">
+          </mat-form-field>
+          <mat-form-field *ngSwitchCase="'rich-editor'">
+            <input matInput readonly [(ngModel)]="element.default" [placeholder]="element.label+' (预览查看)'" type="text" [required]="element.required">
+          </mat-form-field>
+        </div>
+        <div [attr.name]="h3Name" flex="100" *ngIf="elements.length === 0" layout="row" layout-align="center center">
+          <h3>请将控件拖放至此区域</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div flex="20" layout="column" layout-align="start start">
+    <div flex class="card-head" layout="row" layout-align="start center">
+      <div class="block"></div>
+      <div class="push-sm title">
+        属性
+      </div>
+    </div>
+    <div flex class="card-body">
+      <form #panelForm="ngForm" *ngIf="selectedindex >= 0">
+        <div layout="row" layout-wrap layout-margin>
+          <mat-form-field flex="100">
+            <input matInput type="text" name="name" placeholder="控件标识" [(ngModel)]="elements[selectedindex].name" required>
+          </mat-form-field>
+          <mat-form-field flex="100">
+            <input matInput type="text" name="label" placeholder="控件名称" [(ngModel)]="elements[selectedindex].label" required>
+          </mat-form-field>
+          <mat-form-field flex="100">
+            <input matInput type="text" name="type" placeholder="控件类型" [(ngModel)]="elements[selectedindex].type" required>
+          </mat-form-field>
+          <mat-form-field flex="100">
+            <input matInput type="number" name="flex" placeholder="控件宽度(%)" [(ngModel)]="elements[selectedindex].flex" required>
+          </mat-form-field>
+          <mat-form-field flex="100">
+            <input matInput type="text" name="validateUrl" placeholder="校验URL" [matTooltip]="'请求方式:post; body:{value:??}; 额外参数使用query'"
+              [(ngModel)]="elements[selectedindex].validateUrl">
+          </mat-form-field>
+          <mat-checkbox flex="100" name="required" [(ngModel)]="elements[selectedindex].required">
+            <span>是否必填</span>
+          </mat-checkbox>
+          <mat-checkbox flex="100" *ngIf="checkMultiple(elements[selectedindex].type)" name="multiple" [(ngModel)]="elements[selectedindex].multiple">
+            <span>是否允许多选</span>
+          </mat-checkbox>
+          <mat-form-field flex="100" *ngIf="checkDefault(elements[selectedindex].type)">
+            <input matInput type="text" name="default" placeholder="默认值" [(ngModel)]="elements[selectedindex].default">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkMaxlength(elements[selectedindex].type)">
+            <input matInput type="number" name="maxlength" [placeholder]="elements[selectedindex].type == 'file'?'文件最大尺寸':'最大长度'" [(ngModel)]="elements[selectedindex].maxlength">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkMinMax(elements[selectedindex].type)">
+            <input matInput type="number" name="min" placeholder="最小值" [(ngModel)]="elements[selectedindex].min">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkMinMax(elements[selectedindex].type)">
+            <input matInput type="number" name="max" placeholder="最大值" [(ngModel)]="elements[selectedindex].max">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkPattern(elements[selectedindex].type)">
+            <input matInput type="text" name="pattern" placeholder="正则验证" [(ngModel)]="elements[selectedindex].pattern">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkControls(elements[selectedindex].type)" (click)="open('dataform','controls')">
+            <input matInput readonly type="text" name="controls" placeholder="数据表单" [(ngModel)]="elements[selectedindex].controls">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkDatasource(elements[selectedindex].type)" (click)="open('datasource','selections')">
+            <input matInput readonly type="text" name="selections" placeholder="数据源" [(ngModel)]="elements[selectedindex].selections">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkDictionary(elements[selectedindex].type)" (click)="open('dictionary','selections')">
+            <input matInput readonly type="text" name="selections" placeholder="数据字典" [(ngModel)]="elements[selectedindex].selections">
+          </mat-form-field>
+          <mat-checkbox flex="100" *ngIf="checkControls(elements[selectedindex].type)" name="stateMode" [(ngModel)]="elements[selectedindex].config.stateMode">
+            <span>数据是否含状态</span>
+          </mat-checkbox>
+          <mat-form-field flex="100" *ngIf="checkPattern(elements[selectedindex].type)">
+            <input matInput type="text" name="config" placeholder="正则错误提示" [(ngModel)]="elements[selectedindex].config.patternErrors">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkSelectFIeld(elements[selectedindex].type)">
+            <input matInput type="text" name="showField" placeholder="显示字段名" matTooltip="需与[值字段名]同时设置并且非多选才生效" [(ngModel)]="elements[selectedindex].config.showField">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkSelectFIeld(elements[selectedindex].type)">
+            <input matInput type="text" name="valueField" placeholder="值字段名" matTooltip="需与[显示字段名]同时设置并且非多选才生效" [(ngModel)]="elements[selectedindex].config.valueField">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkEntryWidth(elements[selectedindex].type)">
+            <input matInput type="text" name="width" placeholder="弹窗宽度(%)" [(ngModel)]="elements[selectedindex].config.width">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkUploadAccept(elements[selectedindex].type)">
+            <input matInput type="text" name="accept" placeholder="上传文件格式" [(ngModel)]="elements[selectedindex].config.accept">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkIcon(elements[selectedindex].type)">
+            <input matInput type="text" name="icon" placeholder="图标" [(ngModel)]="elements[selectedindex].config.icon">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkIcon(elements[selectedindex].type)">
+            <mat-select name="iconColor" placeholder="图标颜色" [(ngModel)]="elements[selectedindex].config.iconColor">
+              <mat-option value=""></mat-option>
+              <mat-option value="accent">accent</mat-option>
+              <mat-option value="primary">primary</mat-option>
+              <mat-option value="warn">warn</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkSuffix(elements[selectedindex].type)">
+            <input matInput type="text" name="suffix" placeholder="后缀(单位)" [(ngModel)]="elements[selectedindex].config.suffix">
+          </mat-form-field>
+          <mat-form-field flex="100" *ngIf="checkDepth(elements[selectedindex].type)">
+            <textarea matInput rows="4" name="depth" placeholder="异步数据来源" matTooltip="多层级用;隔开 ${value}代表上一级的key，填写此字段数据字典将不再生效" [(ngModel)]="elements[selectedindex].config.depth"></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

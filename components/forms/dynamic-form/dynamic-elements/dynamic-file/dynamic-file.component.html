@@ -1,0 +1,18 @@
+<div class="dynamic-input-wrapper" layout="row">
+  <mat-form-field tdFileDrop [multiple]="multiple" (fileDrop)="value = $event" (click)="fileInput.inputElement.click()"
+    flex>
+    <input matInput [placeholder]="label" [value]="value?.length ? ('共 ' + value?.length + ' 个文件') : value?.name" readonly [required]="required"
+    />
+  </mat-form-field>
+  <button mat-icon-button *ngIf="value?.path" (click)="preview(value.path)">
+    <mat-icon color="accent">file_download</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="value" (click)="value=null">
+    <mat-icon color="warn">cancel</mat-icon>
+  </button>
+  <td-file-input class="push-left-xs push-right-xs" #fileInput [(ngModel)]="value" [multiple]="multiple" [accept]="config?.accept"
+    (select)="select($event)">
+    <mat-icon color="accent">folder</mat-icon>
+    <span class="text-upper">选择文件</span>
+  </td-file-input>
+</div>

@@ -1,0 +1,9 @@
+<mat-dialog-content class="push-bottom-sm">
+  <span>请选择要进行的操作</span>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div layout="row">
+      <button flex mat-button mat-dialog-close>取消</button>
+      <button flex mat-button *ngFor="let btn of actions" (click)="close(btn.key)" color="accent">{{btn.label}}</button>
+  </div>
+</mat-dialog-actions>

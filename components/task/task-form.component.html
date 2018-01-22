@@ -1,0 +1,23 @@
+<div layout="row">
+  <div flex-gt-sm="100">
+    <mat-card>
+      <mat-card-title>任务办理</mat-card-title>
+      <mat-card-content>
+        <div>
+          <button *ngIf="showDialog" mat-button (click)="open()"><mat-icon color="accent">announcement</mat-icon>{{editable? '调整表单数据':'审核表单数据'}}</button>
+          <p *ngIf="!showDialog" flex="20" flex-offset="2" style="padding:16px">表单数据:</p>
+          <mh-step-form #dataForm *ngIf="!showDialog" flex [forms]="forms" [mode]="'horizontal'" [default]="default"></mh-step-form>
+        </div>
+        <div *ngIf="editable" layout="row" style="padding:16px">
+          <p flex="10" flex-offset="2">驳回意见:</p>
+          <p flex="88">{{opinion}}</p>
+        </div>
+        <mh-dynamic-form #form [elements]="elements"></mh-dynamic-form>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button [disabled]="!form.valid" (click)="save(form.value)"><mat-icon color="accent">save</mat-icon>提交</button>
+        <button mat-button (click)="cancel()"><mat-icon color="warn">cancel</mat-icon>取消</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

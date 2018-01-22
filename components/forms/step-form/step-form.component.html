@@ -1,0 +1,12 @@
+<td-steps [mode]="mode">
+  <ng-template ngFor [ngForOf]="forms" let-form let-index="index" let-last="last">
+    <td-step #step [sublabel]="'第 '+(index+1)+' 步'" [active]="actives[index]" [state]="states[index]" [disabled]="disableds[index]">
+      <mh-dynamic-form #dynamicForm [elements]="form.controls?form.controls:form" [default]="default[index]">
+      </mh-dynamic-form>
+      <ng-template td-step-actions alian="end">
+        <button *ngIf="index!==0" mat-button (click)="pre(index,dynamicForm.value)"><mat-icon color="warn">chevron_left</mat-icon>上一步</button>
+        <button *ngIf="!last" [disabled]="!dynamicForm.valid" mat-button (click)="next(index,dynamicForm.value)"><mat-icon color="accent">chevron_right</mat-icon>下一步</button>
+      </ng-template>
+    </td-step>
+  </ng-template>
+</td-steps>

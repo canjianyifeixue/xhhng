@@ -1,0 +1,52 @@
+<div class="dynamic-data-form-wrapper">
+  <label>{{label}}</label>
+  <button mat-icon-button color="accent" (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <td-virtual-scroll-container #virtualScroll [style.height.px]="410" [data]="value">
+    <ng-template let-index="index" let-last="last" tdVirtualScrollRow>
+      <div layout="row" *ngIf="value[index]._$state_ !== 3">
+        <button flex="10" mat-icon-button (click)="remove(index)">
+          <mat-icon color="warn">remove</mat-icon>
+        </button>
+        <div flex="90" layout="row" layout-wrap layout-margin layout-align="start center">
+          <div flex-xs="50" flex-gt-xs="25" *ngFor="let control of controls" [ngSwitch]="control.type">
+            <mat-checkbox (change)="change(index)" *ngSwitchCase="'boolean'" [(ngModel)]="value[index][control.name]" [name]="control.name"
+              [required]="control.required">
+              {{control.label}}
+            </mat-checkbox>
+            <mat-form-field *ngSwitchCase="'enum'">
+              <mat-select (change)="change(index)" [(ngModel)]="value[index][control.name]" [placeholder]="control.label"
+                [required]="control.required">
+                <ng-template ngFor let-opt [ngForOf]="control.selections">
+                  <mat-option *ngIf="isObject(opt)" [value]="opt.key">{{opt.value}}</mat-option>
+                  <mat-option *ngIf="!isObject(opt)" [value]="opt">{{opt}}</mat-option>
+                </ng-template>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field flex="95" *ngSwitchCase="'date'" (click)="picker.open()">
+              <input matInput [matDatepicker]="picker" [name]="control.name" [(ngModel)]="value[index][control.name]" [placeholder]="control.label"
+                readonly>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            </mat-form-field>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-form-field *ngSwitchDefault>
+              <input (change)="change(index)" matInput [(ngModel)]="value[index][control.name]" [name]="control.name" [placeholder]="control.label"
+                [type]="control.type" [required]="control.required" [readonly]="control.readonly">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </td-virtual-scroll-container>
+
+  <!--           <td-paging-bar #pagingBar [total]="filteredTotal" [pageSize]="pageSize" (change)="page($event)">
+            <span td-paging-bar-label hide-xs>每行显示:</span>
+            <mat-select [style.width.px]="50" [(ngModel)]="pageSize">
+              <mat-option *ngFor="let size of [5,10,15,20,50]" [value]="size">
+                {{size}}
+              </mat-option>
+            </mat-select>
+            <span>{{'第 '+pagingBar.range+' 条   共 '+pagingBar.total+' 条'}}</span>
+          </td-paging-bar> -->
+</div>

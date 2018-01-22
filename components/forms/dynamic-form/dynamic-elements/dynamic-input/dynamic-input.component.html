@@ -1,0 +1,21 @@
+<div class="dynamic-input-wrapper" layout="column">
+  <mat-form-field>
+    <input #elementInput
+            matInput
+            [(ngModel)]="value"
+            [placeholder]="label"
+            [type]="type"
+            [required]="required"
+            [min]="min"
+            [max]="max"
+            [pattern]="pattern"
+            [maxlength]="maxlength"
+            [matTooltip]="tooltip"
+            [readonly]="readonly"
+            matTooltipPosition="above"
+            flex>
+    <mat-icon *ngIf="config?.icon" matPrefix [color]="config?.iconColor">{{config.icon}}</mat-icon>
+    <span *ngIf="config?.suffix" matSuffix>{{config.suffix}}</span>
+    <mat-hint *ngIf="maxlength" align="end">{{elementInput.value.length}} / {{maxlength}}</mat-hint>
+  </mat-form-field>
+</div>

@@ -1,0 +1,57 @@
+<div layout="column" style="margin:0 10px 10px 10px">
+  <div flex layout="row" layout-margin>
+    <div layout="row" layout-margin layout-align="center center">
+      <button flex mat-icon-button matTooltip="上一周" matTooltipPosition="above" (click)="preWeek()"><mat-icon>chevron_left</mat-icon></button>
+      <mat-form-field (click)="picker.open()" style="margin-left:20px">
+        <input matInput [matDatepicker]="picker" placeholder="选择日期" readonly [value]="viewDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      </mat-form-field>
+      <mat-datepicker #picker [startAt]="viewDate" (selectedChanged)="dateChange($event)"></mat-datepicker>
+      <button flex mat-icon-button matTooltip="下一周" matTooltipPosition="above" (click)="nextWeek()"><mat-icon>chevron_right</mat-icon></button>
+    </div>
+    <span flex></span>
+    <div layout="row" layout-margin layout-align="center center">
+      <ng-template ngFor [ngForOf]="STATUS" let-s>
+        <div style="width:20px;height:20px;margin:0 10px" [style.background]="color[s.key]"></div>{{s.value}}
+      </ng-template>
+    </div>
+  </div>
+  <mat-grid-list [cols]="cols" rowHeight="40px">
+    <mat-grid-tile [colspan]="TIME.length" rowspan="1" [style.background]="headBgColor" [style.color]="headColor"></mat-grid-tile>
+    <mat-grid-tile *ngFor="let day of days" [colspan]="TIME.length" rowspan="1" [style.background]="headBgColor" [style.color]="headColor">
+      {{day.date}}
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+  <mat-grid-list [cols]="cols" rowHeight="30px">
+    <mat-grid-tile [colspan]="TIME.length" rowspan="1" [style.background]="subBgColor" [style.color]="subColor"></mat-grid-tile>
+    <ng-template ngFor [ngForOf]="days" let-day>
+      <mat-grid-tile *ngFor="let time of TIME;let i=index" colspan="1" rowspan="1" [style.background]="subBgColor" [style.color]="subColor">
+        {{TIME[i].value}}
+      </mat-grid-tile>
+    </ng-template>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+   <ng-template *ngIf="places.length > 0" ngFor [ngForOf]="filteredData" let-item let-index="index" let-last="last">
+    <mat-grid-list [cols]="cols" rowHeight="50px">
+      <mat-grid-tile [colspan]="TIME.length" rowspan="1" [matTooltip]="getTooltip(index)" matTooltipPosition="above" [style.background]="rowHeadBgColor" [style.color]="rowHeadColor">{{item.ddPlace}}</mat-grid-tile>
+      <ng-template ngFor [ngForOf]="days" let-day let-ind="index">
+        <mat-grid-tile *ngFor="let t of TIME;let i=index" colspan="1" rowspan="1" [style.background]="getColor(index, ind ,i)">
+          <button mat-button flex style="width:100%;height:100%" [disabled]="getColor(index, ind ,i)!==color.enabled"
+            (click)="apply(index, ind ,i)"></button>
+        </mat-grid-tile>
+      </ng-template>
+    </mat-grid-list>
+    <mat-divider></mat-divider>
+  </ng-template>
+  <div *ngIf="places.length <= 0" layout="row" layout-align="center center"><h3>暂无场地</h3></div>
+  <td-paging-bar #pagingBar [total]="filteredTotal" [pageSize]="pageSize" (change)="page($event)">
+    <span td-paging-bar-label hide-xs>每行显示:</span>
+    <mat-select [style.width.px]="50" [(ngModel)]="pageSize">
+      <mat-option *ngFor="let size of [5,10,15,20,50]" [value]="size">
+        {{size}}
+      </mat-option>
+    </mat-select>
+    <span>{{'第 '+pagingBar.range+' 条   共 '+pagingBar.total+' 条'}}</span>
+  </td-paging-bar>
+</div>

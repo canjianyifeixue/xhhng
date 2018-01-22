@@ -1,0 +1,12 @@
+<tree-root [nodes]="nodes" (activate)="select($event)" [options]="options">
+  <ng-template #treeNodeTemplate let-node let-index="index">
+    <div layout="row" layout-align=" center" (click)="node.mouseAction('click', $event);node.toggleExpanded()">
+      <mat-checkbox *ngIf="multiple" [checked]="node.data.checked" [indeterminate]="node.data.indeterminate" (change)="check(node, $event)"
+        color="primary">
+        <span>&nbsp;</span>
+      </mat-checkbox>
+      <mat-icon color="accent">{{node.data[nodeIcon] || icon}}</mat-icon>
+      <span class="push-left-xs">{{ node.data[nodeName] }}</span>
+    </div>
+  </ng-template>
+</tree-root>

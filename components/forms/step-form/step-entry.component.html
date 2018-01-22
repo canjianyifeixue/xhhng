@@ -1,0 +1,9 @@
+<div style="font-size: 15px;margin-bottom:15px">{{title}}</div>
+<mat-dialog-content>
+  <mh-step-form #form [forms]="forms" [mode]="'horizontal'" [default]="default"></mh-step-form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button *ngIf="showActions" mat-button [disabled]="!form.valid" (click)="save(form.value)" class="btn-blue">确定</button>
+  <button mat-button mat-dialog-close class="btn-gray">取消</button>
+</mat-dialog-actions>

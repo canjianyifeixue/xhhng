@@ -1,0 +1,25 @@
+<h4 mat-dialog-title>{{title}}</h4>
+<mat-dialog-content>
+  <div layout="row" class="entry-search">
+    <mat-form-field flex="90">
+      <input matInput type="text" [(ngModel)]="searchTerm" placeholder="请输入查询条件">
+    </mat-form-field>
+    <button flex="10" flex-offset="10" mat-icon-button matTooltip="清空" matTooltipPosition="above" (click)="clear()"><mat-icon color="warn">close</mat-icon></button>
+  </div>
+  <div>
+    <span *ngFor="let s of selectedData;let last=last;let index=index">
+      <a (click)="pop(index)">{{s.value}}</a>
+      <span *ngIf="!last">/</span>
+    </span>
+  </div>
+  <mat-nav-list>
+    <td-virtual-scroll-container [style.height.vh]="52" [data]="selections">
+      <ng-template let-selection="row" let-index="index" let-last="last" tdVirtualScrollRow>
+        <mat-list-item (click)="select(selection)">
+          {{selection[valueField]}}
+        </mat-list-item>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </ng-template>
+    </td-virtual-scroll-container>
+  </mat-nav-list>
+</mat-dialog-content>

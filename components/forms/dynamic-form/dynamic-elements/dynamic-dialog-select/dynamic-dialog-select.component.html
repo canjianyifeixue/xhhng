@@ -1,0 +1,10 @@
+<div class="dynamic-dialog-select-wrapper" layout="column">
+    <mat-form-field (click)="open()">
+    <input  matInput
+            [(ngModel)]="showValue"
+            [placeholder]="label"
+            [required]="required"
+            readonly="true"
+            flex>
+  </mat-form-field>
+</div>

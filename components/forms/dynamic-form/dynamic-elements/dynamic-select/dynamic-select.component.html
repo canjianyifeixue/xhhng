@@ -1,0 +1,20 @@
+<div class="dynamic-input-wrapper">
+  <mat-form-field>
+    <!-- <mat-select #selectRef [(ngModel)]="value" [multiple]="multiple" [placeholder]="label" [required]="required">
+      <div layout="row">
+        <mat-form-field flex="85">
+          <input matInput flex>
+        </mat-form-field>
+        <button flex="15" mat-icon-button (click)="control.reset();selectRef.close()" matTooltip="清空所有选项" matTooltipPosition="above">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <ng-template ngFor let-selection [ngForOf]="selections">
+        <mat-option *ngIf="isObject(selection)" [value]="selection.key">{{selection.value}}</mat-option>
+        <mat-option *ngIf="!isObject(selection)" [value]="selection">{{selection}}</mat-option>
+      </ng-template>
+    </mat-select> -->
+    <input matInput type="text" [(ngModel)]="showValue" [placeholder]="label" [required]="required" readonly flex (click)="open()">
+    <mat-icon matSuffix>arrow_drop_down</mat-icon>
+  </mat-form-field>
+</div>

@@ -1,0 +1,33 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var MhDynamicFormType;
+(function (MhDynamicFormType) {
+    MhDynamicFormType["Text"] = "text";
+    MhDynamicFormType["Boolean"] = "boolean";
+    MhDynamicFormType["Number"] = "number";
+    MhDynamicFormType["Date"] = "date";
+    MhDynamicFormType["ENUM"] = "enum";
+})(MhDynamicFormType = exports.MhDynamicFormType || (exports.MhDynamicFormType = {}));
+var MhDynamicFormElement;
+(function (MhDynamicFormElement) {
+    MhDynamicFormElement["Input"] = "input";
+    MhDynamicFormElement["Time"] = "time";
+    MhDynamicFormElement["Number"] = "number";
+    MhDynamicFormElement["Password"] = "password";
+    MhDynamicFormElement["Textarea"] = "textarea";
+    MhDynamicFormElement["Slider"] = "slider";
+    MhDynamicFormElement["SlideToggle"] = "slide-toggle";
+    MhDynamicFormElement["Checkbox"] = "checkbox";
+    MhDynamicFormElement["Select"] = "select";
+    MhDynamicFormElement["DatePicker"] = "date-picker";
+    MhDynamicFormElement["CheckboxGroup"] = "checkbox-group";
+    MhDynamicFormElement["Chips"] = "chips";
+    MhDynamicFormElement["Radio"] = "radio";
+    MhDynamicFormElement["DialogSelect"] = "dialog-select";
+    MhDynamicFormElement["DataForm"] = "data-form";
+    MhDynamicFormElement["File"] = "file";
+    MhDynamicFormElement["RichEditor"] = "rich-editor";
+    MhDynamicFormElement["CodeEditor"] = "code-editor";
+    MhDynamicFormElement["CascadSelect"] = "cascad-select";
+    MhDynamicFormElement["CascadDialog"] = "cascad-dialog";
+})(MhDynamicFormElement = exports.MhDynamicFormElement || (exports.MhDynamicFormElement = {}));
