@@ -19,7 +19,6 @@ var moment_1 = require("../util/moment");
  */
 var HttpService = /** @class */ (function () {
     function HttpService(http, notificationService, api) {
-        var _this = this;
         this.http = http;
         this.notificationService = notificationService;
         this.api = api;
@@ -27,9 +26,9 @@ var HttpService = /** @class */ (function () {
             if (data.status === 1) {
                 return true;
             }
-            else if (data.error) {
-                _this.notificationService.error(data.error);
-            }
+            // else if (data.error) {
+            //   this.notificationService.error(data.error);
+            // }
             return false;
         };
         this.handleError = function (error) {
