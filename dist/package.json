@@ -1,0 +1,47 @@
+{
+  "name": "mng",
+  "version": "1.1.13",
+  "repository": {
+    "type": "git",
+    "url": "http://192.168.0.120:8800/RD/lib/mng"
+  },
+  "author": {
+    "name": "Bryan Chiao",
+    "email": "jbz10226@163.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "http://192.168.0.120:8800/RD/lib/mng/issues"
+  },
+  "main": "mng.umd.js",
+  "module": "mng.js",
+  "jsnext:main": "mng.js",
+  "typings": "mng.d.ts",
+  "peerDependencies": {
+    "@angular/animations": ">= 4.0.0",
+    "@angular/common": ">= 4.0.0",
+    "@angular/core": ">= 4.0.0",
+    "@angular/forms": ">= 4.0.0",
+    "@angular/http": ">= 4.0.0",
+    "@angular/cdk": ">= 5.0.0-rc.0",
+    "@angular/material": ">= 5.0.0-rc.0",
+    "@angular/flex-layout": ">= 2.0.0-beta.8",
+    "@covalent/core": ">= 1.0.0-rc.0",
+    "bootstrap": ">= 4.0.0-beta.2",
+    "jquery": ">= 3.2.1",
+    "summernote": ">= 0.8.8",
+    "angular-tree-component": ">= 6.0.0",
+    "fuse.js": ">= 3.2.0",
+    "html2canvas": ">= 0.5.0-beta4",
+    "jsesc": ">= 2.5.1",
+    "jspdf": ">= 1.3.5",
+    "moment": ">= 2.19.2",
+    "ng2-dragula": ">= 1.5.0",
+    "ng2-file-upload": ">= 1.3.0",
+    "urijs": ">= 1.19.0",
+    "codemirror": ">= 5.32.0"
+  }
+}
