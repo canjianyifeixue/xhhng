@@ -1,4 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var fusejs_ = require("fuse.js");
-exports.fusejs = fusejs_;
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import * as fusejs_ from "fuse.js";
+export var /** @type {?} */ fusejs = fusejs_;

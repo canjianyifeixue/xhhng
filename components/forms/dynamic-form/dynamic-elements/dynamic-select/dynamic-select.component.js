@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,23 +8,21 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-var dynamic_select_entry_component_1 = require("../dynamic-select-entry.component");
-exports.SELECT_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicSelectComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { MatDialog } from "@angular/material";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+import { MhDynamicSelectEntryComponent } from "../dynamic-select-entry.component";
+export var /** @type {?} */ SELECT_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicSelectComponent; }),
     multi: true,
 };
-var MhDynamicSelectComponent = /** @class */ (function (_super) {
+var MhDynamicSelectComponent = (function (_super) {
     __extends(MhDynamicSelectComponent, _super);
     function MhDynamicSelectComponent(dialog) {
         var _this = _super.call(this) || this;
@@ -38,12 +35,19 @@ var MhDynamicSelectComponent = /** @class */ (function (_super) {
         return _this;
     }
     Object.defineProperty(MhDynamicSelectComponent.prototype, "value", {
-        get: function () {
+        get: /**
+         * @return {?}
+         */
+        function () {
             return this._value;
         },
-        set: function (v) {
+        set: /**
+         * @param {?} v
+         * @return {?}
+         */
+        function (v) {
             if (Array.isArray(v)) {
-                var valueArr = [];
+                var /** @type {?} */ valueArr = [];
                 for (var _i = 0, v_1 = v; _i < v_1.length; _i++) {
                     var row = v_1[_i];
                     if (row && row.key) {
@@ -71,7 +75,15 @@ var MhDynamicSelectComponent = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    MhDynamicSelectComponent.prototype.getValue = function (key) {
+    /**
+     * @param {?} key
+     * @return {?}
+     */
+    MhDynamicSelectComponent.prototype.getValue = /**
+     * @param {?} key
+     * @return {?}
+     */
+    function (key) {
         if (!key) {
             return '';
         }
@@ -86,8 +98,14 @@ var MhDynamicSelectComponent = /** @class */ (function (_super) {
         }
         return '';
     };
-    MhDynamicSelectComponent.prototype.genSelections = function () {
-        var arr = [];
+    /**
+     * @return {?}
+     */
+    MhDynamicSelectComponent.prototype.genSelections = /**
+     * @return {?}
+     */
+    function () {
+        var /** @type {?} */ arr = [];
         for (var _i = 0, _a = this.selections; _i < _a.length; _i++) {
             var selection = _a[_i];
             if (typeof selection === 'string') {
@@ -99,9 +117,15 @@ var MhDynamicSelectComponent = /** @class */ (function (_super) {
         }
         return arr;
     };
-    MhDynamicSelectComponent.prototype.open = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicSelectComponent.prototype.open = /**
+     * @return {?}
+     */
+    function () {
         var _this = this;
-        var dialogRef = this.dialog.open(dynamic_select_entry_component_1.MhDynamicSelectEntryComponent, {
+        var /** @type {?} */ dialogRef = this.dialog.open(MhDynamicSelectEntryComponent, {
             width: '64vh',
             height: '80vh',
             data: {
@@ -113,7 +137,7 @@ var MhDynamicSelectComponent = /** @class */ (function (_super) {
         });
         dialogRef.afterClosed().filter(function (data) { return data; }).subscribe(function (data) {
             if (_this.multiple) {
-                var keyArr = [];
+                var /** @type {?} */ keyArr = [];
                 for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
                     var item = data_1[_i];
                     keyArr.push(item.key);
@@ -125,14 +149,43 @@ var MhDynamicSelectComponent = /** @class */ (function (_super) {
             }
         });
     };
-    MhDynamicSelectComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-select',
-            templateUrl: './dynamic-select.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.SELECT_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicSelectComponent);
+    MhDynamicSelectComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-select',
+                    template: "<div class=\"dynamic-input-wrapper\"> <mat-form-field> <!-- <mat-select #selectRef [(ngModel)]=\"value\" [multiple]=\"multiple\" [placeholder]=\"label\" [required]=\"required\"> <div layout=\"row\"> <mat-form-field flex=\"85\"> <input matInput flex> </mat-form-field> <button flex=\"15\" mat-icon-button (click)=\"control.reset();selectRef.close()\" matTooltip=\"清空所有选项\" matTooltipPosition=\"above\"> <mat-icon>close</mat-icon> </button> </div> <ng-template ngFor let-selection [ngForOf]=\"selections\"> <mat-option *ngIf=\"isObject(selection)\" [value]=\"selection.key\">{{selection.value}}</mat-option> <mat-option *ngIf=\"!isObject(selection)\" [value]=\"selection\">{{selection}}</mat-option> </ng-template> </mat-select> --> <input matInput type=\"text\" [(ngModel)]=\"showValue\" [placeholder]=\"label\" [required]=\"required\" readonly flex (click)=\"open()\"> <mat-icon matSuffix>arrow_drop_down</mat-icon> </mat-form-field> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [SELECT_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicSelectComponent.ctorParameters = function () { return [
+        { type: MatDialog, },
+    ]; };
     return MhDynamicSelectComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicSelectComponent = MhDynamicSelectComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicSelectComponent };
+function MhDynamicSelectComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicSelectComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicSelectComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicSelectComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicSelectComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicSelectComponent.prototype.showValue;
+    /** @type {?} */
+    MhDynamicSelectComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicSelectComponent.prototype.multiple;
+    /** @type {?} */
+    MhDynamicSelectComponent.prototype.selections;
+    /** @type {?} */
+    MhDynamicSelectComponent.prototype._value;
+    /** @type {?} */
+    MhDynamicSelectComponent.prototype.dialog;
+}

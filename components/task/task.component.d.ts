@@ -12,8 +12,8 @@ export declare class MhTaskComponent extends BaseTable implements OnInit {
     sortBy: string;
     handleDialog: boolean;
     customFilter: (data: any[]) => any[];
-    userId: string;
     data: any[];
+    userId: string;
     formMode: boolean;
     formControls: any;
     formData: any;

@@ -1,37 +1,44 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var material_1 = require("@angular/material");
-var core_2 = require("@covalent/core");
-var index_1 = require("../dynamic-form/index");
-var step_form_component_1 = require("./step-form.component");
-var step_entry_component_1 = require("./step-entry.component");
-var MhStepFormModule = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { MatIconModule, MatButtonModule, MatDialogModule, } from "@angular/material";
+import { CovalentStepsModule, CovalentCommonModule, } from "@covalent/core";
+import { MhDynamicFormModule } from "../dynamic-form/index";
+import { MhStepFormComponent } from "./step-form.component";
+import { StepEntryComponent } from "./step-entry.component";
+var MhStepFormModule = (function () {
     function MhStepFormModule() {
     }
-    MhStepFormModule = __decorate([
-        core_1.NgModule({
-            imports: [
-                common_1.CommonModule,
-                core_2.CovalentCommonModule,
-                core_2.CovalentStepsModule,
-                material_1.MatIconModule,
-                material_1.MatButtonModule,
-                index_1.MhDynamicFormModule,
-                material_1.MatDialogModule,
-            ],
-            exports: [step_form_component_1.MhStepFormComponent, step_entry_component_1.StepEntryComponent],
-            declarations: [step_form_component_1.MhStepFormComponent, step_entry_component_1.StepEntryComponent],
-            entryComponents: [step_entry_component_1.StepEntryComponent]
-        })
-    ], MhStepFormModule);
+    MhStepFormModule.decorators = [
+        { type: NgModule, args: [{
+                    imports: [
+                        CommonModule,
+                        CovalentCommonModule,
+                        CovalentStepsModule,
+                        MatIconModule,
+                        MatButtonModule,
+                        MhDynamicFormModule,
+                        MatDialogModule,
+                    ],
+                    exports: [MhStepFormComponent, StepEntryComponent],
+                    declarations: [MhStepFormComponent, StepEntryComponent],
+                    entryComponents: [StepEntryComponent]
+                },] },
+    ];
+    /** @nocollapse */
+    MhStepFormModule.ctorParameters = function () { return []; };
     return MhStepFormModule;
 }());
-exports.MhStepFormModule = MhStepFormModule;
+export { MhStepFormModule };
+function MhStepFormModule_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhStepFormModule.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhStepFormModule.ctorParameters;
+}

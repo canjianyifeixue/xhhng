@@ -1,26 +1,33 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var tree_view_component_1 = require("./tree-view.component");
-var angular_tree_component_1 = require("angular-tree-component");
-var material_1 = require("@angular/material");
-var MhTreeViewModule = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { TreeViewComponent } from "./tree-view.component";
+import { TreeModule } from "angular-tree-component";
+import { MatIconModule, MatCheckboxModule } from "@angular/material";
+var MhTreeViewModule = (function () {
     function MhTreeViewModule() {
     }
-    MhTreeViewModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, angular_tree_component_1.TreeModule, material_1.MatIconModule, material_1.MatCheckboxModule],
-            exports: [tree_view_component_1.TreeViewComponent],
-            declarations: [tree_view_component_1.TreeViewComponent]
-        })
-    ], MhTreeViewModule);
+    MhTreeViewModule.decorators = [
+        { type: NgModule, args: [{
+                    imports: [CommonModule, TreeModule, MatIconModule, MatCheckboxModule],
+                    exports: [TreeViewComponent],
+                    declarations: [TreeViewComponent]
+                },] },
+    ];
+    /** @nocollapse */
+    MhTreeViewModule.ctorParameters = function () { return []; };
     return MhTreeViewModule;
 }());
-exports.MhTreeViewModule = MhTreeViewModule;
+export { MhTreeViewModule };
+function MhTreeViewModule_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhTreeViewModule.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhTreeViewModule.ctorParameters;
+}

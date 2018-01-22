@@ -1,4 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var html2canvas_ = require("html2canvas");
-exports.html2canvas = html2canvas_.default || html2canvas_;
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import * as html2canvas_ from "html2canvas";
+export var /** @type {?} */ html2canvas = (/** @type {?} */ (html2canvas_)).default || html2canvas_;

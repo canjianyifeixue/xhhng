@@ -2,7 +2,7 @@ import { Http, RequestOptionsArgs } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { NotificationService } from './notification.service';
 /**
- *  封装Http请求方法
+ *  封装AuthHttp请求方法
  */
 export declare class HttpService {
     private http;
@@ -26,19 +26,19 @@ export declare class HttpService {
      * @param url  请求路径
      * @param data  body对象
      */
-    put(url: string, data: any): any;
+    put(url: string, data: any): Observable<any>;
     /**
      * patch请求方法
      * @param url 请求路径
      * @param data body对象
      */
-    patch(url: string, data: any): any;
+    patch(url: string, data: any): Observable<any>;
     /**
      * delete请求方法
      * @param url 请求路径
      * @param options 请求参数(例如headers)
      */
-    delete(url: string, options?: RequestOptionsArgs): any;
+    delete(url: string, options?: RequestOptionsArgs): Observable<any>;
     /**
      * 文件下载方法
      * @param url 文件路径
@@ -47,6 +47,9 @@ export declare class HttpService {
      */
     download(url: string, name?: string, download?: boolean): Observable<any>;
     private filterStatus;
+    /**
+     * 捕获token过期异常
+     */
     private handleError;
     private getTimestampUrl(url);
 }

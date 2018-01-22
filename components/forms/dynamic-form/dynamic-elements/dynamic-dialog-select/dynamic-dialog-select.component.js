@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,23 +8,21 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-var dynamic_dialog_entry_component_1 = require("../dynamic-dialog-entry.component");
-exports.DIALOG_SELECT_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicDialogSelectComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { MatDialog } from "@angular/material";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+import { MhDynamicDialogEntryComponent } from "../dynamic-dialog-entry.component";
+export var /** @type {?} */ DIALOG_SELECT_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicDialogSelectComponent; }),
     multi: true,
 };
-var MhDynamicDialogSelectComponent = /** @class */ (function (_super) {
+var MhDynamicDialogSelectComponent = (function (_super) {
     __extends(MhDynamicDialogSelectComponent, _super);
     function MhDynamicDialogSelectComponent(dialog) {
         var _this = _super.call(this) || this;
@@ -37,8 +34,14 @@ var MhDynamicDialogSelectComponent = /** @class */ (function (_super) {
         _this.showValue = '';
         return _this;
     }
-    MhDynamicDialogSelectComponent.prototype.ngOnInit = function () {
-        var data = this.value;
+    /**
+     * @return {?}
+     */
+    MhDynamicDialogSelectComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
+        var /** @type {?} */ data = this.value;
         if (data) {
             if (!this.multiple || data.length <= 1) {
                 if (this.config
@@ -56,7 +59,7 @@ var MhDynamicDialogSelectComponent = /** @class */ (function (_super) {
                     && this.config.showField.length > 0
                     && this.config.valueField
                     && this.config.valueField.length > 0) {
-                    var selections = this.selections.items || this.selections;
+                    var /** @type {?} */ selections = this.selections.items || this.selections;
                     for (var _i = 0, selections_1 = selections; _i < selections_1.length; _i++) {
                         var selection = selections_1[_i];
                         if (selection[this.config.valueField] === data) {
@@ -80,9 +83,15 @@ var MhDynamicDialogSelectComponent = /** @class */ (function (_super) {
             }
         }
     };
-    MhDynamicDialogSelectComponent.prototype.open = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicDialogSelectComponent.prototype.open = /**
+     * @return {?}
+     */
+    function () {
         var _this = this;
-        var dialogRef = this.dialog.open(dynamic_dialog_entry_component_1.MhDynamicDialogEntryComponent, {
+        var /** @type {?} */ dialogRef = this.dialog.open(MhDynamicDialogEntryComponent, {
             width: (this.config && this.config.width) || '70%',
             data: {
                 label: this.label,
@@ -114,14 +123,43 @@ var MhDynamicDialogSelectComponent = /** @class */ (function (_super) {
             }
         });
     };
-    MhDynamicDialogSelectComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-dialog-select',
-            templateUrl: './dynamic-dialog-select.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.DIALOG_SELECT_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicDialogSelectComponent);
+    MhDynamicDialogSelectComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-dialog-select',
+                    template: "<div class=\"dynamic-dialog-select-wrapper\" layout=\"column\"> <mat-form-field (click)=\"open()\"> <input  matInput [(ngModel)]=\"showValue\" [placeholder]=\"label\" [required]=\"required\" readonly=\"true\" flex> </mat-form-field> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [DIALOG_SELECT_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicDialogSelectComponent.ctorParameters = function () { return [
+        { type: MatDialog, },
+    ]; };
     return MhDynamicDialogSelectComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicDialogSelectComponent = MhDynamicDialogSelectComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicDialogSelectComponent };
+function MhDynamicDialogSelectComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicDialogSelectComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicDialogSelectComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicDialogSelectComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicDialogSelectComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicDialogSelectComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicDialogSelectComponent.prototype.selections;
+    /** @type {?} */
+    MhDynamicDialogSelectComponent.prototype.multiple;
+    /** @type {?} */
+    MhDynamicDialogSelectComponent.prototype.showValue;
+    /** @type {?} */
+    MhDynamicDialogSelectComponent.prototype.config;
+    /** @type {?} */
+    MhDynamicDialogSelectComponent.prototype.dialog;
+}

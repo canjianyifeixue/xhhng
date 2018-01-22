@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,22 +8,19 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.SLIDER_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicSliderComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ SLIDER_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicSliderComponent; }),
     multi: true,
 };
-var MhDynamicSliderComponent = /** @class */ (function (_super) {
+var MhDynamicSliderComponent = (function (_super) {
     __extends(MhDynamicSliderComponent, _super);
     function MhDynamicSliderComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -34,14 +30,35 @@ var MhDynamicSliderComponent = /** @class */ (function (_super) {
         _this.max = null;
         return _this;
     }
-    MhDynamicSliderComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-slider',
-            templateUrl: './dynamic-slider.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.SLIDER_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicSliderComponent);
+    MhDynamicSliderComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-slider',
+                    template: "<div class=\"dynamic-slider-wrapper relative push-top\" flex layout=\"column\"> <label class=\"mat-input-placeholder mat-float td-slider-label\" [class.mat-focused]=\"slider._isActive\"> {{label}} <span *ngIf=\"required\" class=\"mat-placeholder-required\">*</span></label> <div layout=\"row\" layout-align=\"start center\" flex> <mat-slider #slider [(ngModel)]=\"value\" [min]=\"min\" [max]=\"max\" thumbLabel tickInterval=\"auto\" [required]=\"required\" flex> </mat-slider> </div>   </div>",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [SLIDER_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicSliderComponent.ctorParameters = function () { return []; };
     return MhDynamicSliderComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicSliderComponent = MhDynamicSliderComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicSliderComponent };
+function MhDynamicSliderComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicSliderComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicSliderComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicSliderComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicSliderComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicSliderComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicSliderComponent.prototype.min;
+    /** @type {?} */
+    MhDynamicSliderComponent.prototype.max;
+}

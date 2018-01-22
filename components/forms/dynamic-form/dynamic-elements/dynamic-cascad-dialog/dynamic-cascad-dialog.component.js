@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,34 +8,42 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.CASCAD_DIALOG_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicCascadDialogComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ CASCAD_DIALOG_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicCascadDialogComponent; }),
     multi: true,
 };
-var MhDynamicCascadDialogComponent = /** @class */ (function (_super) {
+var MhDynamicCascadDialogComponent = (function (_super) {
     __extends(MhDynamicCascadDialogComponent, _super);
     function MhDynamicCascadDialogComponent() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    MhDynamicCascadDialogComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-cascad-dialog',
-            templateUrl: './dynamic-cascad-dialog.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.CASCAD_DIALOG_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicCascadDialogComponent);
+    MhDynamicCascadDialogComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-cascad-dialog',
+                    template: "<p> dynamic-cascad-dialog works! </p>",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [CASCAD_DIALOG_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicCascadDialogComponent.ctorParameters = function () { return []; };
     return MhDynamicCascadDialogComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicCascadDialogComponent = MhDynamicCascadDialogComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicCascadDialogComponent };
+function MhDynamicCascadDialogComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicCascadDialogComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicCascadDialogComponent.ctorParameters;
+}

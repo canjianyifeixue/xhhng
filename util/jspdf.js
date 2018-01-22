@@ -1,4 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var jspdf_ = require("jspdf");
-exports.jspdf = jspdf_.default || jspdf_;
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import * as jspdf_ from "jspdf";
+export var /** @type {?} */ jspdf = (/** @type {?} */ (jspdf_)).default || jspdf_;

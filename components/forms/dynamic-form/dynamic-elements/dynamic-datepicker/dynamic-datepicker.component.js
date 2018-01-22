@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,22 +8,20 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.DATE_PICKER_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicDatepickerComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { DateAdapter } from "@angular/material";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ DATE_PICKER_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicDatepickerComponent; }),
     multi: true,
 };
-var MhDynamicDatepickerComponent = /** @class */ (function (_super) {
+var MhDynamicDatepickerComponent = (function (_super) {
     __extends(MhDynamicDatepickerComponent, _super);
     function MhDynamicDatepickerComponent(dateAdapter) {
         var _this = _super.call(this) || this;
@@ -35,10 +32,17 @@ var MhDynamicDatepickerComponent = /** @class */ (function (_super) {
         return _this;
     }
     Object.defineProperty(MhDynamicDatepickerComponent.prototype, "value", {
-        get: function () {
+        get: /**
+         * @return {?}
+         */
+        function () {
             return this._value;
         },
-        set: function (v) {
+        set: /**
+         * @param {?} v
+         * @return {?}
+         */
+        function (v) {
             if (!(v instanceof Date) && v !== null) {
                 v = new Date(v);
             }
@@ -48,14 +52,37 @@ var MhDynamicDatepickerComponent = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    MhDynamicDatepickerComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-datepicker',
-            templateUrl: './dynamic-datepicker.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.DATE_PICKER_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicDatepickerComponent);
+    MhDynamicDatepickerComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-datepicker',
+                    template: "<div class=\"dynamic-input-wrapper\" layout=\"column\"> <!--<mat-form-field> <input matInput [(ngModel)]=\"value\" [placeholder]=\"label\" type=\"date\" [required]=\"required\" flex> </mat-form-field>--> <mat-form-field (click)=\"picker.open()\"> <input matInput [matDatepicker]=\"picker\" [(ngModel)]=\"value\" [placeholder]=\"label\" [required]=\"required\" flex readonly> <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle> </mat-form-field> <mat-datepicker #picker touchUi=\"true\"></mat-datepicker> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [DATE_PICKER_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicDatepickerComponent.ctorParameters = function () { return [
+        { type: DateAdapter, },
+    ]; };
     return MhDynamicDatepickerComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicDatepickerComponent = MhDynamicDatepickerComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicDatepickerComponent };
+function MhDynamicDatepickerComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicDatepickerComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicDatepickerComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicDatepickerComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicDatepickerComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicDatepickerComponent.prototype.type;
+    /** @type {?} */
+    MhDynamicDatepickerComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicDatepickerComponent.prototype._value;
+}

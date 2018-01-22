@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,22 +8,19 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.CHECKBOX_GROUP_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicCheckboxGroupComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ CHECKBOX_GROUP_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicCheckboxGroupComponent; }),
     multi: true,
 };
-var MhDynamicCheckboxGroupComponent = /** @class */ (function (_super) {
+var MhDynamicCheckboxGroupComponent = (function (_super) {
     __extends(MhDynamicCheckboxGroupComponent, _super);
     function MhDynamicCheckboxGroupComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -35,10 +31,17 @@ var MhDynamicCheckboxGroupComponent = /** @class */ (function (_super) {
         return _this;
     }
     Object.defineProperty(MhDynamicCheckboxGroupComponent.prototype, "value", {
-        get: function () {
+        get: /**
+         * @return {?}
+         */
+        function () {
             return this._value;
         },
-        set: function (v) {
+        set: /**
+         * @param {?} v
+         * @return {?}
+         */
+        function (v) {
             if (v === null) {
                 v = [];
             }
@@ -48,8 +51,16 @@ var MhDynamicCheckboxGroupComponent = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    MhDynamicCheckboxGroupComponent.prototype.change = function (index) {
-        var i = this._value.indexOf(this.selections[index]);
+    /**
+     * @param {?} index
+     * @return {?}
+     */
+    MhDynamicCheckboxGroupComponent.prototype.change = /**
+     * @param {?} index
+     * @return {?}
+     */
+    function (index) {
+        var /** @type {?} */ i = this._value.indexOf(this.selections[index]);
         if (i >= 0) {
             this.control.setValue(this._value.slice(0, i).concat(this._value.slice(i + 1)));
         }
@@ -59,17 +70,46 @@ var MhDynamicCheckboxGroupComponent = /** @class */ (function (_super) {
             ]));
         }
     };
-    MhDynamicCheckboxGroupComponent.prototype.isObject = function (value) {
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    MhDynamicCheckboxGroupComponent.prototype.isObject = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
         return typeof value === 'object';
     };
-    MhDynamicCheckboxGroupComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-checkboxgroup',
-            templateUrl: './dynamic-checkbox-group.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.CHECKBOX_GROUP_INPUT_CONTROL_VALUE_ACCESSOR],
-        })
-    ], MhDynamicCheckboxGroupComponent);
+    MhDynamicCheckboxGroupComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-checkboxgroup',
+                    template: "<div class=\"dynamic-checkbox-group-wrapper\"> <label>{{label}}</label> <div layout-margin> <ng-template ngFor let-selection [ngForOf]=\"selections\" let-index=\"index\"> <mat-checkbox *ngIf=\"isObject(selection)\" (change)=\"change(index)\" [ngModel]=\"value.indexOf(selection) >= 0\" flex> {{selection.value}} </mat-checkbox> <mat-checkbox *ngIf=\"!isObject(selection)\" (change)=\"change(index)\" [ngModel]=\"value.indexOf(selection) >= 0\" flex> {{selection}} </mat-checkbox> </ng-template> </div> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [CHECKBOX_GROUP_INPUT_CONTROL_VALUE_ACCESSOR],
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicCheckboxGroupComponent.ctorParameters = function () { return []; };
     return MhDynamicCheckboxGroupComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicCheckboxGroupComponent = MhDynamicCheckboxGroupComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicCheckboxGroupComponent };
+function MhDynamicCheckboxGroupComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicCheckboxGroupComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicCheckboxGroupComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicCheckboxGroupComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicCheckboxGroupComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicCheckboxGroupComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicCheckboxGroupComponent.prototype.selections;
+    /** @type {?} */
+    MhDynamicCheckboxGroupComponent.prototype._value;
+}

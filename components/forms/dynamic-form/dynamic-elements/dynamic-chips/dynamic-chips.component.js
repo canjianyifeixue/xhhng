@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,22 +8,19 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.CHIPS_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicChipsComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ CHIPS_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicChipsComponent; }),
     multi: true,
 };
-var MhDynamicChipsComponent = /** @class */ (function (_super) {
+var MhDynamicChipsComponent = (function (_super) {
     __extends(MhDynamicChipsComponent, _super);
     function MhDynamicChipsComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -37,10 +33,17 @@ var MhDynamicChipsComponent = /** @class */ (function (_super) {
         return _this;
     }
     Object.defineProperty(MhDynamicChipsComponent.prototype, "value", {
-        get: function () {
+        get: /**
+         * @return {?}
+         */
+        function () {
             return this._value;
         },
-        set: function (v) {
+        set: /**
+         * @param {?} v
+         * @return {?}
+         */
+        function (v) {
             if (v !== this._value) {
                 if (v === null) {
                     this._value = [];
@@ -54,7 +57,13 @@ var MhDynamicChipsComponent = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    MhDynamicChipsComponent.prototype.ngOnInit = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicChipsComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
         this.items = [];
         for (var _i = 0, _a = this.selections; _i < _a.length; _i++) {
             var selection = _a[_i];
@@ -66,7 +75,15 @@ var MhDynamicChipsComponent = /** @class */ (function (_super) {
             }
         }
     };
-    MhDynamicChipsComponent.prototype.add = function (v) {
+    /**
+     * @param {?} v
+     * @return {?}
+     */
+    MhDynamicChipsComponent.prototype.add = /**
+     * @param {?} v
+     * @return {?}
+     */
+    function (v) {
         for (var _i = 0, _a = this.selections; _i < _a.length; _i++) {
             var selection = _a[_i];
             if (typeof selection === 'object') {
@@ -81,9 +98,17 @@ var MhDynamicChipsComponent = /** @class */ (function (_super) {
             }
         }
     };
-    MhDynamicChipsComponent.prototype.remove = function (v) {
-        for (var i = 0; i < this.selections.length; i++) {
-            var selection = this.selections[i];
+    /**
+     * @param {?} v
+     * @return {?}
+     */
+    MhDynamicChipsComponent.prototype.remove = /**
+     * @param {?} v
+     * @return {?}
+     */
+    function (v) {
+        for (var /** @type {?} */ i = 0; i < this.selections.length; i++) {
+            var /** @type {?} */ selection = this.selections[i];
             if (typeof selection === 'object') {
                 if (v === selection.value) {
                     this.control.setValue(this._value.slice(0, i).concat([this._value.slice(i + 1)]));
@@ -96,14 +121,39 @@ var MhDynamicChipsComponent = /** @class */ (function (_super) {
             }
         }
     };
-    MhDynamicChipsComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-chips',
-            templateUrl: './dynamic-chips.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.CHIPS_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicChipsComponent);
+    MhDynamicChipsComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-chips',
+                    template: "<div class=\"dynamic-chips-wrapper\" style=\"padding-bottom:24px\"> <td-chips [items]=\"items\" [(ngModel)]=\"value\" [placeholder]=\"label\" [disabled]=\"readonly\" requireMatch [required]=\"required\" (add)=\"add($event)\" (remove)=\"remove($event)\"> </td-chips> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [CHIPS_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicChipsComponent.ctorParameters = function () { return []; };
     return MhDynamicChipsComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicChipsComponent = MhDynamicChipsComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicChipsComponent };
+function MhDynamicChipsComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicChipsComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicChipsComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicChipsComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicChipsComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicChipsComponent.prototype.selections;
+    /** @type {?} */
+    MhDynamicChipsComponent.prototype.items;
+    /** @type {?} */
+    MhDynamicChipsComponent.prototype.readonly;
+    /** @type {?} */
+    MhDynamicChipsComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicChipsComponent.prototype._value;
+}

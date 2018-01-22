@@ -1,4 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var moment_ = require("moment");
-exports.moment = moment_.default || moment_;
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import * as moment_ from "moment";
+export var /** @type {?} */ moment = (/** @type {?} */ (moment_)).default || moment_;

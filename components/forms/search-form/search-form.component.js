@@ -1,26 +1,45 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var SearchFormComponent = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { HttpUtilService } from "../../../services/index";
+import { DateAdapter } from "@angular/material";
+/**
+ * @record
+ */
+export function ISearchConfig() { }
+function ISearchConfig_tsickle_Closure_declarations() {
+    /** @type {?} */
+    ISearchConfig.prototype.name;
+    /** @type {?} */
+    ISearchConfig.prototype.label;
+    /** @type {?} */
+    ISearchConfig.prototype.type;
+    /** @type {?|undefined} */
+    ISearchConfig.prototype.selections;
+}
+var SearchFormComponent = (function () {
     function SearchFormComponent(httpUtilService, dateAdapter) {
         this.httpUtilService = httpUtilService;
         this._elements = [];
         this.value = {};
-        this.selected = new core_1.EventEmitter();
+        this.selected = new EventEmitter();
         this.defaultValue = this.value;
         dateAdapter.setLocale('zh-CN');
     }
     Object.defineProperty(SearchFormComponent.prototype, "elements", {
-        get: function () {
+        get: /**
+         * @return {?}
+         */
+        function () {
             return this._elements;
         },
-        set: function (v) {
+        set: /**
+         * @param {?} v
+         * @return {?}
+         */
+        function (v) {
             var _this = this;
             v.forEach(function (c) {
                 if (typeof c.selections === 'string') {
@@ -33,35 +52,87 @@ var SearchFormComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    SearchFormComponent.prototype.isObject = function (value) {
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    SearchFormComponent.prototype.isObject = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
         return typeof value === 'object';
     };
-    SearchFormComponent.prototype.dateSelect = function (value, name) {
+    /**
+     * @param {?} value
+     * @param {?} name
+     * @return {?}
+     */
+    SearchFormComponent.prototype.dateSelect = /**
+     * @param {?} value
+     * @param {?} name
+     * @return {?}
+     */
+    function (value, name) {
         this.value[name] = value;
         this.change();
     };
-    SearchFormComponent.prototype.change = function () {
+    /**
+     * @return {?}
+     */
+    SearchFormComponent.prototype.change = /**
+     * @return {?}
+     */
+    function () {
         this.selected.emit(this.value);
     };
-    SearchFormComponent.prototype.reset = function () {
+    /**
+     * @return {?}
+     */
+    SearchFormComponent.prototype.reset = /**
+     * @return {?}
+     */
+    function () {
         this.value = this.defaultValue;
         this.change();
     };
-    __decorate([
-        core_1.Input('elements')
-    ], SearchFormComponent.prototype, "elements", null);
-    __decorate([
-        core_1.Input('value')
-    ], SearchFormComponent.prototype, "value", void 0);
-    __decorate([
-        core_1.Output('selected')
-    ], SearchFormComponent.prototype, "selected", void 0);
-    SearchFormComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-search-form',
-            templateUrl: './search-form.component.html',
-        })
-    ], SearchFormComponent);
+    SearchFormComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-search-form',
+                    template: "<form #searchForm=\"ngForm\"> <div layout=\"row\" layout-wrap layout-margin layout-align=\"start center\"> <div flex-xs=\"50\" flex-gt-xs=\"25\" layout=\"row\" *ngFor=\"let control of elements\" [ngSwitch]=\"control.type\"> <mat-checkbox flex=\"95\" (change)=\"change()\" *ngSwitchCase=\"'boolean'\" [(ngModel)]=\"value[control.name]\" [name]=\"control.name\"> {{control.label}} </mat-checkbox> <mat-form-field flex=\"95\" *ngSwitchCase=\"'enum'\"> <mat-select (change)=\"change()\" [name]=\"control.name\" [(ngModel)]=\"value[control.name]\" [placeholder]=\"control.label\"> <ng-template ngFor let-opt [ngForOf]=\"control.selections\"> <mat-option *ngIf=\"isObject(opt)\" [value]=\"opt.key\">{{opt.value}}</mat-option> <mat-option *ngIf=\"!isObject(opt)\" [value]=\"opt\">{{opt}}</mat-option> </ng-template> </mat-select> </mat-form-field> <mat-form-field flex=\"95\" *ngSwitchCase=\"'date'\" (click)=\"picker.open()\"> <input matInput [matDatepicker]=\"picker\" [name]=\"control.name\" [(ngModel)]=\"value[control.name]\" [placeholder]=\"control.label\" readonly> <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle> </mat-form-field> <mat-datepicker #picker (selectedChanged)=\"dateSelect($event,control.name)\"></mat-datepicker> </div> </div> </form> ",
+                },] },
+    ];
+    /** @nocollapse */
+    SearchFormComponent.ctorParameters = function () { return [
+        { type: HttpUtilService, },
+        { type: DateAdapter, },
+    ]; };
+    SearchFormComponent.propDecorators = {
+        "elements": [{ type: Input, args: ['elements',] },],
+        "value": [{ type: Input, args: ['value',] },],
+        "selected": [{ type: Output, args: ['selected',] },],
+    };
     return SearchFormComponent;
 }());
-exports.SearchFormComponent = SearchFormComponent;
+export { SearchFormComponent };
+function SearchFormComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    SearchFormComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    SearchFormComponent.ctorParameters;
+    /** @type {!Object<string,!Array<{type: !Function, args: (undefined|!Array<?>)}>>} */
+    SearchFormComponent.propDecorators;
+    /** @type {?} */
+    SearchFormComponent.prototype.defaultValue;
+    /** @type {?} */
+    SearchFormComponent.prototype._elements;
+    /** @type {?} */
+    SearchFormComponent.prototype.value;
+    /** @type {?} */
+    SearchFormComponent.prototype.selected;
+    /** @type {?} */
+    SearchFormComponent.prototype.httpUtilService;
+}

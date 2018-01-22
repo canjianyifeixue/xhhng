@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,22 +8,19 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.CODE_EDITOR_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicCodeEditorComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ CODE_EDITOR_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicCodeEditorComponent; }),
     multi: true,
 };
-var MhDynamicCodeEditorComponent = /** @class */ (function (_super) {
+var MhDynamicCodeEditorComponent = (function (_super) {
     __extends(MhDynamicCodeEditorComponent, _super);
     function MhDynamicCodeEditorComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -35,20 +31,51 @@ var MhDynamicCodeEditorComponent = /** @class */ (function (_super) {
         _this.maxlength = null;
         return _this;
     }
-    MhDynamicCodeEditorComponent.prototype.callBackFunc = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicCodeEditorComponent.prototype.callBackFunc = /**
+     * @return {?}
+     */
+    function () {
         // callback
     };
-    MhDynamicCodeEditorComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-code-editor',
-            templateUrl: './dynamic-code-editor.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.CODE_EDITOR_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicCodeEditorComponent);
+    MhDynamicCodeEditorComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-code-editor',
+                    template: "<div class=\"dynamic-code-deitor-wrapper\"> <p>{{label}}</p> <!-- <td-code-editor style=\"height: 200px\" editorStyle=\"border:0;\" flex theme=\"vs\" [editorStyle]=\"theme\" language=\"sql\" automaticLayout [(ngModel)]=\"value\" (change)=\"callBackFunc()\"> </td-code-editor> --> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [CODE_EDITOR_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicCodeEditorComponent.ctorParameters = function () { return []; };
     return MhDynamicCodeEditorComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicCodeEditorComponent = MhDynamicCodeEditorComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicCodeEditorComponent };
+function MhDynamicCodeEditorComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicCodeEditorComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicCodeEditorComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicCodeEditorComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicCodeEditorComponent.prototype.language;
+    /** @type {?} */
+    MhDynamicCodeEditorComponent.prototype.theme;
+    /** @type {?} */
+    MhDynamicCodeEditorComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicCodeEditorComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicCodeEditorComponent.prototype.readonly;
+    /** @type {?} */
+    MhDynamicCodeEditorComponent.prototype.maxlength;
+}
 // declare let $: any;
 // import {
 //     Component,

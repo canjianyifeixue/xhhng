@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,22 +8,19 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.INPUT_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicInputComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ INPUT_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicInputComponent; }),
     multi: true,
 };
-var MhDynamicInputComponent = /** @class */ (function (_super) {
+var MhDynamicInputComponent = (function (_super) {
     __extends(MhDynamicInputComponent, _super);
     function MhDynamicInputComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -38,9 +34,15 @@ var MhDynamicInputComponent = /** @class */ (function (_super) {
         _this.maxlength = null;
         return _this;
     }
-    MhDynamicInputComponent.prototype.ngOnInit = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicInputComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
         var _this = this;
-        var change$ = this.control.valueChanges;
+        var /** @type {?} */ change$ = this.control.valueChanges;
         change$.map(function (v) { return _this.control.errors; })
             .subscribe(function (v) {
             if (v === null) {
@@ -51,14 +53,47 @@ var MhDynamicInputComponent = /** @class */ (function (_super) {
             }
         });
     };
-    MhDynamicInputComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-input',
-            templateUrl: './dynamic-input.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.INPUT_INPUT_CONTROL_VALUE_ACCESSOR],
-        })
-    ], MhDynamicInputComponent);
+    MhDynamicInputComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-input',
+                    template: "<div class=\"dynamic-input-wrapper\" layout=\"column\"> <mat-form-field> <input #elementInput matInput [(ngModel)]=\"value\" [placeholder]=\"label\" [type]=\"type\" [required]=\"required\" [min]=\"min\" [max]=\"max\" [pattern]=\"pattern\" [maxlength]=\"maxlength\" [matTooltip]=\"tooltip\" [readonly]=\"readonly\" matTooltipPosition=\"above\" flex> <mat-icon *ngIf=\"config?.icon\" matPrefix [color]=\"config?.iconColor\">{{config.icon}}</mat-icon> <span *ngIf=\"config?.suffix\" matSuffix>{{config.suffix}}</span> <mat-hint *ngIf=\"maxlength\" align=\"end\">{{elementInput.value.length}} / {{maxlength}}</mat-hint> </mat-form-field> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [INPUT_INPUT_CONTROL_VALUE_ACCESSOR],
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicInputComponent.ctorParameters = function () { return []; };
     return MhDynamicInputComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicInputComponent = MhDynamicInputComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicInputComponent };
+function MhDynamicInputComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicInputComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicInputComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.type;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.readonly;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.min;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.max;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.pattern;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.maxlength;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.tooltip;
+    /** @type {?} */
+    MhDynamicInputComponent.prototype.config;
+}

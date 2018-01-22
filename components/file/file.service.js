@@ -1,19 +1,18 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var Observable_1 = require("rxjs/Observable");
-var html2canvas_1 = require("../../util/html2canvas");
-var jspdf_1 = require("../../util/jspdf");
-var upload_dialog_component_1 = require("./upload-dialog.component");
-var import_dialog_component_1 = require("./import-dialog.component");
-var export_dialog_component_1 = require("./export-dialog.component");
-var MhFileService = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Injectable } from "@angular/core";
+import { MatDialog } from "@angular/material";
+import { Observable } from "rxjs/Observable";
+import { TdLoadingService } from "@covalent/core";
+import { html2canvas } from "../../util/html2canvas";
+import { jspdf as jsPDF } from "../../util/jspdf";
+import { HttpService } from "../../services/index";
+import { UploadDialogComponent } from "./upload-dialog.component";
+import { ImportDialogComponent } from "./import-dialog.component";
+import { ExportDialogComponent } from "./export-dialog.component";
+var MhFileService = (function () {
     function MhFileService(dialog, httpService, loadingService) {
         this.dialog = dialog;
         this.httpService = httpService;
@@ -22,19 +21,26 @@ var MhFileService = /** @class */ (function () {
     /**
      * 检测数据中是否包含文件属性
      * 一般用于动态表单中验证图片上传
-     * @param data 所验证的数据
+     * @param {?} data 所验证的数据
+     * @return {?}
      */
-    MhFileService.prototype.checkUploadData = function (data) {
-        var fileObj = {};
+    MhFileService.prototype.checkUploadData = /**
+     * 检测数据中是否包含文件属性
+     * 一般用于动态表单中验证图片上传
+     * @param {?} data 所验证的数据
+     * @return {?}
+     */
+    function (data) {
+        var /** @type {?} */ fileObj = {};
         for (var _i = 0, _a = Object.keys(data); _i < _a.length; _i++) {
             var key = _a[_i];
-            var v = data[key];
+            var /** @type {?} */ v = data[key];
             if (v instanceof File) {
                 fileObj[key] = v;
             }
             else if (v instanceof FileList) {
-                var fileList = [];
-                for (var i = 0; i < v.length; i++) {
+                var /** @type {?} */ fileList = [];
+                for (var /** @type {?} */ i = 0; i < v.length; i++) {
                     fileList = fileList.concat([v.item(i)]);
                 }
                 fileObj[key] = fileList;
@@ -44,7 +50,7 @@ var MhFileService = /** @class */ (function () {
             return this.upload(fileObj).map(function (form) { return Object.assign({}, data, form); });
         }
         else {
-            return Observable_1.Observable.create(function (sub) {
+            return Observable.create(function (sub) {
                 sub.next(data);
                 sub.complete();
             });
@@ -52,10 +58,16 @@ var MhFileService = /** @class */ (function () {
     };
     /**
      * 文件上传方法
-     * @param files 所选择的文件
+     * @param {?} files 所选择的文件
+     * @return {?}
      */
-    MhFileService.prototype.upload = function (files) {
-        return this.dialog.open(upload_dialog_component_1.UploadDialogComponent, {
+    MhFileService.prototype.upload = /**
+     * 文件上传方法
+     * @param {?} files 所选择的文件
+     * @return {?}
+     */
+    function (files) {
+        return this.dialog.open(UploadDialogComponent, {
             disableClose: true,
             width: '70%',
             data: files
@@ -63,12 +75,19 @@ var MhFileService = /** @class */ (function () {
     };
     /**
      * excel导入数据
-     * @param templateId 模板ID
-     * @param url  可选导入url(一般不填)
+     * @param {?} templateId 模板ID
+     * @param {?=} url  可选导入url(一般不填)
+     * @return {?}
      */
-    MhFileService.prototype.import = function (templateId, url) {
+    MhFileService.prototype.import = /**
+     * excel导入数据
+     * @param {?} templateId 模板ID
+     * @param {?=} url  可选导入url(一般不填)
+     * @return {?}
+     */
+    function (templateId, url) {
         this.loadingService.register('loading');
-        return this.dialog.open(import_dialog_component_1.ImportDialogComponent, {
+        return this.dialog.open(ImportDialogComponent, {
             disableClose: true,
             width: '70%',
             data: {
@@ -79,42 +98,89 @@ var MhFileService = /** @class */ (function () {
     };
     /**
      * 导出excel数据
+     * @param {?} name
+     * @param {?} datasourceId
+     * @param {?} query
+     * @param {?} data
+     * @param {?} columns
+     * @return {?}
      */
-    MhFileService.prototype.exportXlsx = function (name, datasourceId, query, data, columns) {
+    MhFileService.prototype.exportXlsx = /**
+     * 导出excel数据
+     * @param {?} name
+     * @param {?} datasourceId
+     * @param {?} query
+     * @param {?} data
+     * @param {?} columns
+     * @return {?}
+     */
+    function (name, datasourceId, query, data, columns) {
         var _this = this;
-        return this.dialog.open(export_dialog_component_1.ExportDialogComponent, {
+        return this.dialog.open(ExportDialogComponent, {
             width: '70%',
             data: {
                 data: data,
                 columns: columns,
             }
         }).afterClosed().filter(function (_) { return _; })
-            .flatMap(function (_) { return _this.httpService.post("/public/file/export", {
-            datasourceId: datasourceId,
-            query: query,
-            columns: _,
-            name: name
-        }); }).map(function (_) { return _.path; }).flatMap(function (_) { return _this.httpService.download(_); });
+            .flatMap(function (_) {
+            return _this.httpService.post("/public/file/export", {
+                datasourceId: datasourceId,
+                query: query,
+                columns: _,
+                name: name
+            });
+        }).map(function (_) { return _.path; }).flatMap(function (_) { return _this.httpService.download(_); });
     };
     /**
      * 导出html为pdf
+     * @param {?} element
+     * @param {?} filename
+     * @return {?}
      */
-    MhFileService.prototype.exportPDF = function (element, filename) {
+    MhFileService.prototype.exportPDF = /**
+     * 导出html为pdf
+     * @param {?} element
+     * @param {?} filename
+     * @return {?}
+     */
+    function (element, filename) {
         if (!/\.pdf$/.test(filename)) {
             filename += '.pdf';
         }
-        return Observable_1.Observable.fromPromise(html2canvas_1.html2canvas(element))
+        return Observable.fromPromise(html2canvas(element))
             .map(function (canvas) {
-            var imgData = canvas.toDataURL('img/notice/png');
-            var pdf = new jspdf_1.jspdf();
+            var /** @type {?} */ imgData = canvas.toDataURL('img/notice/png');
+            var /** @type {?} */ pdf = new jsPDF();
             pdf.addImage(imgData, 'PNG', 20, 20);
             pdf.save(filename);
             return filename;
         });
     };
-    MhFileService = __decorate([
-        core_1.Injectable()
-    ], MhFileService);
+    MhFileService.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    MhFileService.ctorParameters = function () { return [
+        { type: MatDialog, },
+        { type: HttpService, },
+        { type: TdLoadingService, },
+    ]; };
     return MhFileService;
 }());
-exports.MhFileService = MhFileService;
+export { MhFileService };
+function MhFileService_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhFileService.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhFileService.ctorParameters;
+    /** @type {?} */
+    MhFileService.prototype.dialog;
+    /** @type {?} */
+    MhFileService.prototype.httpService;
+    /** @type {?} */
+    MhFileService.prototype.loadingService;
+}

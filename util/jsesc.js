@@ -1,4 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var jsesc_ = require("jsesc");
-exports.jsesc = jsesc_.default || jsesc_;
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import * as jsesc_ from "jsesc";
+export var /** @type {?} */ jsesc = (/** @type {?} */ (jsesc_)).default || jsesc_;

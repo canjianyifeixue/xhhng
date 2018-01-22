@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,22 +8,19 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.CHECKBOX_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicCheckboxComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ CHECKBOX_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicCheckboxComponent; }),
     multi: true,
 };
-var MhDynamicCheckboxComponent = /** @class */ (function (_super) {
+var MhDynamicCheckboxComponent = (function (_super) {
     __extends(MhDynamicCheckboxComponent, _super);
     function MhDynamicCheckboxComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -32,19 +28,42 @@ var MhDynamicCheckboxComponent = /** @class */ (function (_super) {
         _this.required = false;
         return _this;
     }
-    MhDynamicCheckboxComponent.prototype.ngOnInit = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicCheckboxComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
         if (this._value === null) {
             this.control.setValue(false);
         }
     };
-    MhDynamicCheckboxComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-checkbox',
-            templateUrl: './dynamic-checkbox.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.CHECKBOX_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicCheckboxComponent);
+    MhDynamicCheckboxComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-checkbox',
+                    template: "<div class=\"dynamic-checkbox-wrapper\"> <mat-checkbox [(ngModel)]=\"value\" [required]=\"required\" flex> {{label}} </mat-checkbox> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [CHECKBOX_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicCheckboxComponent.ctorParameters = function () { return []; };
     return MhDynamicCheckboxComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicCheckboxComponent = MhDynamicCheckboxComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicCheckboxComponent };
+function MhDynamicCheckboxComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicCheckboxComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicCheckboxComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicCheckboxComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicCheckboxComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicCheckboxComponent.prototype.required;
+}

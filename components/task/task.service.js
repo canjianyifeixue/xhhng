@@ -1,13 +1,10 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var TaskService = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Injectable } from "@angular/core";
+import { HttpService } from "../../services/index";
+var TaskService = (function () {
     function TaskService(httpService) {
         this.httpService = httpService;
         this.actUrl = '/platform/workflow/activiti';
@@ -15,49 +12,123 @@ var TaskService = /** @class */ (function () {
     }
     /**
      * 根据key获取流程表单
+     * @param {?} key
+     * @return {?}
      */
-    TaskService.prototype.getFormByProcessKey = function (key) {
+    TaskService.prototype.getFormByProcessKey = /**
+     * 根据key获取流程表单
+     * @param {?} key
+     * @return {?}
+     */
+    function (key) {
         return this.httpService.get(this.bizUrl + "/model-form/" + key);
     };
     /**
      * 获取运行中流程数据
+     * @param {?} instanceId
+     * @return {?}
      */
-    TaskService.prototype.getProcessInfo = function (instanceId) {
+    TaskService.prototype.getProcessInfo = /**
+     * 获取运行中流程数据
+     * @param {?} instanceId
+     * @return {?}
+     */
+    function (instanceId) {
         return this.httpService.get(this.bizUrl + "/process/" + instanceId);
     };
     /**
      * 获取当前任务的动态表单
+     * @param {?} taskId
+     * @return {?}
      */
-    TaskService.prototype.getDynamicField = function (taskId) {
+    TaskService.prototype.getDynamicField = /**
+     * 获取当前任务的动态表单
+     * @param {?} taskId
+     * @return {?}
+     */
+    function (taskId) {
         return this.httpService.get(this.actUrl + "/form/dynamic/get-form/task/" + taskId);
     };
     /**
      * 完成任务
+     * @param {?} data
+     * @return {?}
      */
-    TaskService.prototype.completeTask = function (data) {
+    TaskService.prototype.completeTask = /**
+     * 完成任务
+     * @param {?} data
+     * @return {?}
+     */
+    function (data) {
         return this.httpService.post(this.actUrl + "/runtime/task/find/complete", data);
     };
     /**
      * 更新流程并记录
+     * @param {?} instanceId
+     * @param {?} data
+     * @return {?}
      */
-    TaskService.prototype.updateProcess = function (instanceId, data) {
+    TaskService.prototype.updateProcess = /**
+     * 更新流程并记录
+     * @param {?} instanceId
+     * @param {?} data
+     * @return {?}
+     */
+    function (instanceId, data) {
         return this.httpService.patch(this.bizUrl + "/process/" + instanceId, data);
     };
     /**
      * 结束流程并记录
+     * @param {?} instanceId
+     * @param {?=} processVar
+     * @return {?}
      */
-    TaskService.prototype.finishProcess = function (instanceId, processVar) {
+    TaskService.prototype.finishProcess = /**
+     * 结束流程并记录
+     * @param {?} instanceId
+     * @param {?=} processVar
+     * @return {?}
+     */
+    function (instanceId, processVar) {
         return this.httpService.delete(this.bizUrl + "/process/" + instanceId, { params: processVar });
     };
     /**
      * 获取待办任务列表
+     * @param {?} userId
+     * @param {?=} key
+     * @return {?}
      */
-    TaskService.prototype.getTaskList = function (userId, key) {
+    TaskService.prototype.getTaskList = /**
+     * 获取待办任务列表
+     * @param {?} userId
+     * @param {?=} key
+     * @return {?}
+     */
+    function (userId, key) {
         return this.httpService.get(this.bizUrl + "/task/" + userId + "?key=" + key);
     };
-    TaskService = __decorate([
-        core_1.Injectable()
-    ], TaskService);
+    TaskService.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    TaskService.ctorParameters = function () { return [
+        { type: HttpService, },
+    ]; };
     return TaskService;
 }());
-exports.TaskService = TaskService;
+export { TaskService };
+function TaskService_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    TaskService.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    TaskService.ctorParameters;
+    /** @type {?} */
+    TaskService.prototype.actUrl;
+    /** @type {?} */
+    TaskService.prototype.bizUrl;
+    /** @type {?} */
+    TaskService.prototype.httpService;
+}

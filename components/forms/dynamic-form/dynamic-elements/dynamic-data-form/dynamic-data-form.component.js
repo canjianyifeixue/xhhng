@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,23 +8,21 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-var dynamic_dialog_entry_component_1 = require("../dynamic-dialog-entry.component");
-exports.DATA_FORM_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicDataFormComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { MatDialog } from "@angular/material";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+import { MhDynamicDialogEntryComponent } from "../dynamic-dialog-entry.component";
+export var /** @type {?} */ DATA_FORM_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicDataFormComponent; }),
     multi: true,
 };
-var MhDynamicDataFormComponent = /** @class */ (function (_super) {
+var MhDynamicDataFormComponent = (function (_super) {
     __extends(MhDynamicDataFormComponent, _super);
     function MhDynamicDataFormComponent(dialog) {
         var _this = _super.call(this) || this;
@@ -41,10 +38,17 @@ var MhDynamicDataFormComponent = /** @class */ (function (_super) {
         return _this;
     }
     Object.defineProperty(MhDynamicDataFormComponent.prototype, "value", {
-        get: function () {
+        get: /**
+         * @return {?}
+         */
+        function () {
             return this._value;
         },
-        set: function (v) {
+        set: /**
+         * @param {?} v
+         * @return {?}
+         */
+        function (v) {
             if (v !== this._value) {
                 if (v !== null && this.config && this.config.stateMode) {
                     for (var _i = 0, v_1 = v; _i < v_1.length; _i++) {
@@ -62,14 +66,20 @@ var MhDynamicDataFormComponent = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    MhDynamicDataFormComponent.prototype.ngOnInit = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicDataFormComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
         if (this._value === null) {
             this.control.setValue([]);
         }
         else {
-            var value = [];
-            for (var i = 0; i < this._value.length; i++) {
-                var v = this._value[i];
+            var /** @type {?} */ value = [];
+            for (var /** @type {?} */ i = 0; i < this._value.length; i++) {
+                var /** @type {?} */ v = this._value[i];
                 if (this.config && this.config.stateMode) {
                     v[this.idField] = i + 1;
                     v[this.stateField] = 0;
@@ -82,9 +92,14 @@ var MhDynamicDataFormComponent = /** @class */ (function (_super) {
     };
     /**
      * 获取表单模型
+     * @return {?}
      */
-    MhDynamicDataFormComponent.prototype.getModel = function () {
-        var obj = {};
+    MhDynamicDataFormComponent.prototype.getModel = /**
+     * 获取表单模型
+     * @return {?}
+     */
+    function () {
+        var /** @type {?} */ obj = {};
         for (var _i = 0, _a = this.controls; _i < _a.length; _i++) {
             var control = _a[_i];
             if (control.type === 'boolean') {
@@ -96,15 +111,20 @@ var MhDynamicDataFormComponent = /** @class */ (function (_super) {
     };
     /**
      * 增加新的一条数据
+     * @return {?}
      */
-    MhDynamicDataFormComponent.prototype.add = function () {
+    MhDynamicDataFormComponent.prototype.add = /**
+     * 增加新的一条数据
+     * @return {?}
+     */
+    function () {
         var _this = this;
         if (!this.selections || this.selections === null || this.selections.length <= 0) {
-            var model = this.getModel();
+            var /** @type {?} */ model = this.getModel();
             this.insertData(model);
             return;
         }
-        var dialogRef = this.dialog.open(dynamic_dialog_entry_component_1.MhDynamicDialogEntryComponent, {
+        var /** @type {?} */ dialogRef = this.dialog.open(MhDynamicDialogEntryComponent, {
             width: '70%',
             data: { label: this.label, data: this.selections.items || this.selections, columns: this.selections.columns || [] }
         });
@@ -120,8 +140,15 @@ var MhDynamicDataFormComponent = /** @class */ (function (_super) {
     };
     /**
      * 插入数据的实现
+     * @param {?} data
+     * @return {?}
      */
-    MhDynamicDataFormComponent.prototype.insertData = function (data) {
+    MhDynamicDataFormComponent.prototype.insertData = /**
+     * 插入数据的实现
+     * @param {?} data
+     * @return {?}
+     */
+    function (data) {
         if (this.config && this.config.stateMode) {
             data[this.idField] = this.length += 1;
             data[this.stateField] = 1;
@@ -132,10 +159,17 @@ var MhDynamicDataFormComponent = /** @class */ (function (_super) {
     };
     /**
      * 删除一条数据
+     * @param {?} index
+     * @return {?}
      */
-    MhDynamicDataFormComponent.prototype.remove = function (index) {
+    MhDynamicDataFormComponent.prototype.remove = /**
+     * 删除一条数据
+     * @param {?} index
+     * @return {?}
+     */
+    function (index) {
         if (this.config && this.config.stateMode) {
-            var value = this._value;
+            var /** @type {?} */ value = this._value;
             if (value[index][this.stateField] === 1) {
                 value = value.slice(0, index).concat(value.slice(index + 1));
             }
@@ -148,29 +182,88 @@ var MhDynamicDataFormComponent = /** @class */ (function (_super) {
             this.control.setValue(this._value.slice(0, index).concat(this._value.slice(index + 1)));
         }
     };
-    MhDynamicDataFormComponent.prototype.isObject = function (value) {
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    MhDynamicDataFormComponent.prototype.isObject = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
         return typeof value === 'object';
     };
-    MhDynamicDataFormComponent.prototype.change = function (index) {
+    /**
+     * @param {?} index
+     * @return {?}
+     */
+    MhDynamicDataFormComponent.prototype.change = /**
+     * @param {?} index
+     * @return {?}
+     */
+    function (index) {
         if (this.config && this.config.stateMode && this._value[index][this.stateField] === 0) {
-            var value = this._value;
+            var /** @type {?} */ value = this._value;
             value[index][this.stateField] = 2;
             this.control.setValue(value);
         }
     };
-    MhDynamicDataFormComponent.prototype.page = function (pagingEvent) {
+    /**
+     * @param {?} pagingEvent
+     * @return {?}
+     */
+    MhDynamicDataFormComponent.prototype.page = /**
+     * @param {?} pagingEvent
+     * @return {?}
+     */
+    function (pagingEvent) {
         // const fromRow = pagingEvent.fromRow;
         // const currentPage = pagingEvent.page;
         // const pageSize = pagingEvent.pageSize;
     };
-    MhDynamicDataFormComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-data-form',
-            templateUrl: './dynamic-data-form.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.DATA_FORM_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicDataFormComponent);
+    MhDynamicDataFormComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-data-form',
+                    template: "<div class=\"dynamic-data-form-wrapper\"> <label>{{label}}</label> <button mat-icon-button color=\"accent\" (click)=\"add()\"> <mat-icon>add</mat-icon> </button> <td-virtual-scroll-container #virtualScroll [style.height.px]=\"410\" [data]=\"value\"> <ng-template let-index=\"index\" let-last=\"last\" tdVirtualScrollRow> <div layout=\"row\" *ngIf=\"value[index]._$state_ !== 3\"> <button flex=\"10\" mat-icon-button (click)=\"remove(index)\"> <mat-icon color=\"warn\">remove</mat-icon> </button> <div flex=\"90\" layout=\"row\" layout-wrap layout-margin layout-align=\"start center\"> <div flex-xs=\"50\" flex-gt-xs=\"25\" *ngFor=\"let control of controls\" [ngSwitch]=\"control.type\"> <mat-checkbox (change)=\"change(index)\" *ngSwitchCase=\"'boolean'\" [(ngModel)]=\"value[index][control.name]\" [name]=\"control.name\" [required]=\"control.required\"> {{control.label}} </mat-checkbox> <mat-form-field *ngSwitchCase=\"'enum'\"> <mat-select (change)=\"change(index)\" [(ngModel)]=\"value[index][control.name]\" [placeholder]=\"control.label\" [required]=\"control.required\"> <ng-template ngFor let-opt [ngForOf]=\"control.selections\"> <mat-option *ngIf=\"isObject(opt)\" [value]=\"opt.key\">{{opt.value}}</mat-option> <mat-option *ngIf=\"!isObject(opt)\" [value]=\"opt\">{{opt}}</mat-option> </ng-template> </mat-select> </mat-form-field> <mat-form-field flex=\"95\" *ngSwitchCase=\"'date'\" (click)=\"picker.open()\"> <input matInput [matDatepicker]=\"picker\" [name]=\"control.name\" [(ngModel)]=\"value[index][control.name]\" [placeholder]=\"control.label\" readonly> <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle> </mat-form-field> <mat-datepicker #picker></mat-datepicker> <mat-form-field *ngSwitchDefault> <input (change)=\"change(index)\" matInput [(ngModel)]=\"value[index][control.name]\" [name]=\"control.name\" [placeholder]=\"control.label\" [type]=\"control.type\" [required]=\"control.required\" [readonly]=\"control.readonly\"> </mat-form-field> </div> </div> </div> </ng-template> </td-virtual-scroll-container> <!--           <td-paging-bar #pagingBar [total]=\"filteredTotal\" [pageSize]=\"pageSize\" (change)=\"page($event)\"> <span td-paging-bar-label hide-xs>每行显示:</span> <mat-select [style.width.px]=\"50\" [(ngModel)]=\"pageSize\"> <mat-option *ngFor=\"let size of [5,10,15,20,50]\" [value]=\"size\"> {{size}} </mat-option> </mat-select> <span>{{'第 '+pagingBar.range+' 条   共 '+pagingBar.total+' 条'}}</span> </td-paging-bar> --> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [DATA_FORM_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicDataFormComponent.ctorParameters = function () { return [
+        { type: MatDialog, },
+    ]; };
     return MhDynamicDataFormComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicDataFormComponent = MhDynamicDataFormComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicDataFormComponent };
+function MhDynamicDataFormComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicDataFormComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicDataFormComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.length;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.idField;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.stateField;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.selections;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.controls;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.config;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype._value;
+    /** @type {?} */
+    MhDynamicDataFormComponent.prototype.dialog;
+}

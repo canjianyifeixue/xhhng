@@ -1,4 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var tree_view_module_1 = require("./tree-view.module");
-exports.MhTreeViewModule = tree_view_module_1.MhTreeViewModule;
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+export { MhTreeViewModule } from "./tree-view.module";

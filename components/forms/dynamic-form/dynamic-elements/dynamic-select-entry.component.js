@@ -1,19 +1,12 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var material_1 = require("@angular/material");
-var fuse_js_1 = require("../../../../util/fuse-js");
-var Observable_1 = require("rxjs/Observable");
-var MhDynamicSelectEntryComponent = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, Inject } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { fusejs as Fuse } from "../../../../util/fuse-js";
+import { Observable } from "rxjs/Observable";
+var MhDynamicSelectEntryComponent = (function () {
     function MhDynamicSelectEntryComponent(dialogRef, dialogData) {
         this.dialogRef = dialogRef;
         this.dialogData = dialogData;
@@ -31,11 +24,17 @@ var MhDynamicSelectEntryComponent = /** @class */ (function () {
             keys: [],
         };
     }
-    MhDynamicSelectEntryComponent.prototype.ngOnInit = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicSelectEntryComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
         this.selections = this.dialogData.selections;
         this.multiple = this.dialogData.multiple;
         this.title = this.dialogData.title;
-        var data = this.dialogData.default;
+        var /** @type {?} */ data = this.dialogData.default;
         if (this.multiple) {
             for (var _i = 0, _a = this.selections; _i < _a.length; _i++) {
                 var selection = _a[_i];
@@ -44,7 +43,7 @@ var MhDynamicSelectEntryComponent = /** @class */ (function () {
             if (Array.isArray(data)) {
                 for (var _b = 0, data_1 = data; _b < data_1.length; _b++) {
                     var d = data_1[_b];
-                    for (var i = 0; i < this.selections.length; i++) {
+                    for (var /** @type {?} */ i = 0; i < this.selections.length; i++) {
                         if (this.selections[i].key === d) {
                             this.selections[i].checked = true;
                             break;
@@ -55,12 +54,18 @@ var MhDynamicSelectEntryComponent = /** @class */ (function () {
         }
         this.initFuse();
     };
-    MhDynamicSelectEntryComponent.prototype.initFuse = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicSelectEntryComponent.prototype.initFuse = /**
+     * @return {?}
+     */
+    function () {
         var _this = this;
         this.fuseOptions.keys = ['key', 'value'];
         this.backupSelections = this.selections.slice();
-        this.fuse = new fuse_js_1.fusejs(this.selections, this.fuseOptions);
-        Observable_1.Observable.interval()
+        this.fuse = new Fuse(this.selections, this.fuseOptions);
+        Observable.interval()
             .map(function (_) { return _this.searchTerm; })
             .distinctUntilChanged()
             .subscribe(function (_) {
@@ -72,14 +77,36 @@ var MhDynamicSelectEntryComponent = /** @class */ (function () {
             }
         });
     };
-    MhDynamicSelectEntryComponent.prototype.select = function (item) {
+    /**
+     * @param {?} item
+     * @return {?}
+     */
+    MhDynamicSelectEntryComponent.prototype.select = /**
+     * @param {?} item
+     * @return {?}
+     */
+    function (item) {
         this.dialogRef.close(item);
     };
-    MhDynamicSelectEntryComponent.prototype.multChange = function (selection) {
+    /**
+     * @param {?} selection
+     * @return {?}
+     */
+    MhDynamicSelectEntryComponent.prototype.multChange = /**
+     * @param {?} selection
+     * @return {?}
+     */
+    function (selection) {
         selection.checked = !selection.checked;
     };
-    MhDynamicSelectEntryComponent.prototype.multSelect = function () {
-        var arr = [];
+    /**
+     * @return {?}
+     */
+    MhDynamicSelectEntryComponent.prototype.multSelect = /**
+     * @return {?}
+     */
+    function () {
+        var /** @type {?} */ arr = [];
         for (var _i = 0, _a = this.selections; _i < _a.length; _i++) {
             var selection = _a[_i];
             if (selection.checked) {
@@ -88,7 +115,13 @@ var MhDynamicSelectEntryComponent = /** @class */ (function () {
         }
         this.dialogRef.close(arr);
     };
-    MhDynamicSelectEntryComponent.prototype.clear = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicSelectEntryComponent.prototype.clear = /**
+     * @return {?}
+     */
+    function () {
         if (this.multiple) {
             this.dialogRef.close([{ key: null, value: '' }]);
         }
@@ -96,13 +129,44 @@ var MhDynamicSelectEntryComponent = /** @class */ (function () {
             this.dialogRef.close({ key: null, value: '' });
         }
     };
-    MhDynamicSelectEntryComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-select-entry',
-            templateUrl: './dynamic-select-entry.component.html'
-        }),
-        __param(1, core_1.Inject(material_1.MAT_DIALOG_DATA))
-    ], MhDynamicSelectEntryComponent);
+    MhDynamicSelectEntryComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-select-entry',
+                    template: "<h4 mat-dialog-title>{{title}}</h4> <mat-dialog-content> <div layout=\"row\" class=\"entry-search\"> <mat-form-field flex=\"80\"> <input matInput type=\"text\" [(ngModel)]=\"searchTerm\" placeholder=\"请输入查询条件\"> </mat-form-field> <button flex=\"10\" *ngIf=\"!multiple\" flex-offset=\"10\" mat-icon-button matTooltip=\"清空\" matTooltipPosition=\"above\" (click)=\"clear()\"><mat-icon color=\"warn\">close</mat-icon></button> <button flex=\"10\" *ngIf=\"multiple\" mat-icon-button matTooltip=\"清空\" matTooltipPosition=\"above\" (click)=\"clear()\"><mat-icon color=\"warn\">close</mat-icon></button> <button flex=\"10\" *ngIf=\"multiple\" mat-icon-button matTooltip=\"确认\" matTooltipPosition=\"above\" (click)=\"multSelect()\"><mat-icon color=\"accent\">check</mat-icon></button> </div> <mat-nav-list> <td-virtual-scroll-container [style.height.vh]=\"55\" [data]=\"selections\"> <ng-template let-selection=\"row\" let-index=\"index\" let-last=\"last\" tdVirtualScrollRow> <mat-list-item *ngIf=\"!multiple\" (click)=\"select(selection)\"> {{selection.value}} </mat-list-item> <mat-list-item *ngIf=\"multiple\" (click)=\"multChange(selection)\"> <mat-checkbox [(ngModel)]=\"selection.checked\" color=\"primary\" (click)=\"multChange(selection)\"> <span>{{selection.value}}</span> </mat-checkbox> </mat-list-item> <mat-divider *ngIf=\"!last\"></mat-divider> </ng-template> </td-virtual-scroll-container> </mat-nav-list> </mat-dialog-content> "
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicSelectEntryComponent.ctorParameters = function () { return [
+        { type: MatDialogRef, },
+        { type: undefined, decorators: [{ type: Inject, args: [MAT_DIALOG_DATA,] },] },
+    ]; };
     return MhDynamicSelectEntryComponent;
 }());
-exports.MhDynamicSelectEntryComponent = MhDynamicSelectEntryComponent;
+export { MhDynamicSelectEntryComponent };
+function MhDynamicSelectEntryComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicSelectEntryComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicSelectEntryComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicSelectEntryComponent.prototype.selections;
+    /** @type {?} */
+    MhDynamicSelectEntryComponent.prototype.multiple;
+    /** @type {?} */
+    MhDynamicSelectEntryComponent.prototype.title;
+    /** @type {?} */
+    MhDynamicSelectEntryComponent.prototype.fuse;
+    /** @type {?} */
+    MhDynamicSelectEntryComponent.prototype.backupSelections;
+    /** @type {?} */
+    MhDynamicSelectEntryComponent.prototype.searchTerm;
+    /** @type {?} */
+    MhDynamicSelectEntryComponent.prototype.fuseOptions;
+    /** @type {?} */
+    MhDynamicSelectEntryComponent.prototype.dialogRef;
+    /** @type {?} */
+    MhDynamicSelectEntryComponent.prototype.dialogData;
+}

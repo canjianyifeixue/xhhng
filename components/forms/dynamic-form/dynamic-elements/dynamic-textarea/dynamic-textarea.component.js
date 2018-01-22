@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,22 +8,19 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.TEXTAREA_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicTextareaComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ TEXTAREA_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicTextareaComponent; }),
     multi: true,
 };
-var MhDynamicTextareaComponent = /** @class */ (function (_super) {
+var MhDynamicTextareaComponent = (function (_super) {
     __extends(MhDynamicTextareaComponent, _super);
     function MhDynamicTextareaComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -34,25 +30,48 @@ var MhDynamicTextareaComponent = /** @class */ (function (_super) {
         _this.maxlength = null;
         _this.readonly = false;
         return _this;
-        // _value: any;
-        // get value(): any {
-        //   return encodeURI(this._value);
-        // }
-        // set value(v: any) {
-        //   if (v !== this._value) {
-        //     this._value = decodeURI(v);
-        //     this.onChange(v);
-        //   }
-        // }
     }
-    MhDynamicTextareaComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-textarea',
-            templateUrl: './dynamic-textarea.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.TEXTAREA_INPUT_CONTROL_VALUE_ACCESSOR]
-        })
-    ], MhDynamicTextareaComponent);
+    // _value: any;
+    // get value(): any {
+    //   return encodeURI(this._value);
+    // }
+    // set value(v: any) {
+    //   if (v !== this._value) {
+    //     this._value = decodeURI(v);
+    //     this.onChange(v);
+    //   }
+    // }
+    MhDynamicTextareaComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-textarea',
+                    template: "<div class=\"dynamic-textarea-wrapper\" layout=\"column\"> <mat-form-field> <textarea #elementInput matInput [(ngModel)]=\"value\" [placeholder]=\"label\" [required]=\"required\" rows=\"4\" [pattern]=\"pattern\" [maxlength]=\"maxlength\" [readonly]=\"readonly\" flex> </textarea> </mat-form-field> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [TEXTAREA_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicTextareaComponent.ctorParameters = function () { return []; };
     return MhDynamicTextareaComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicTextareaComponent = MhDynamicTextareaComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicTextareaComponent };
+function MhDynamicTextareaComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicTextareaComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicTextareaComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicTextareaComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicTextareaComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicTextareaComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicTextareaComponent.prototype.pattern;
+    /** @type {?} */
+    MhDynamicTextareaComponent.prototype.maxlength;
+    /** @type {?} */
+    MhDynamicTextareaComponent.prototype.readonly;
+}

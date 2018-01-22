@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,25 +8,20 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var abstract_control_value_accesor_1 = require("../abstract-control-value-accesor");
-exports.FILE_INPUT_CONTROL_VALUE_ACCESSOR = {
-    provide: forms_1.NG_VALUE_ACCESSOR,
-    useExisting: core_1.forwardRef(function () { return MhDynamicFileComponent; }),
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, forwardRef, Inject } from "@angular/core";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { MhDynamicLoaderService } from "../../dynamic-loader.service";
+import { AbstractControlValueAccessor } from "../abstract-control-value-accesor";
+export var /** @type {?} */ FILE_INPUT_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(function () { return MhDynamicFileComponent; }),
     multi: true,
 };
-var MhDynamicFileComponent = /** @class */ (function (_super) {
+var MhDynamicFileComponent = (function (_super) {
     __extends(MhDynamicFileComponent, _super);
     function MhDynamicFileComponent(notificationService, dynamicLoaderService) {
         var _this = _super.call(this) || this;
@@ -38,10 +32,17 @@ var MhDynamicFileComponent = /** @class */ (function (_super) {
         return _this;
     }
     Object.defineProperty(MhDynamicFileComponent.prototype, "value", {
-        get: function () {
+        get: /**
+         * @return {?}
+         */
+        function () {
             return this._value;
         },
-        set: function (v) {
+        set: /**
+         * @param {?} v
+         * @return {?}
+         */
+        function (v) {
             var _this = this;
             if (v === null) {
                 this._value = null;
@@ -49,6 +50,7 @@ var MhDynamicFileComponent = /** @class */ (function (_super) {
             else if (typeof v === 'string') {
                 this.dynamicLoaderService.loadFiles(v)
                     .subscribe(function (_) {
+                    // const file = new File([_.blob], _.name)
                     // const file = new File([_.blob], _.name)
                     _this._value = _;
                     _this.onChange(_);
@@ -62,12 +64,20 @@ var MhDynamicFileComponent = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    MhDynamicFileComponent.prototype.select = function (files) {
+    /**
+     * @param {?} files
+     * @return {?}
+     */
+    MhDynamicFileComponent.prototype.select = /**
+     * @param {?} files
+     * @return {?}
+     */
+    function (files) {
         if (this.maxlength) {
             if (files instanceof FileList) {
-                var err = false;
-                for (var i = 0; i < files.length; i++) {
-                    var file = files.item(i);
+                var /** @type {?} */ err = false;
+                for (var /** @type {?} */ i = 0; i < files.length; i++) {
+                    var /** @type {?} */ file = files.item(i);
                     if (file.size > this.maxlength) {
                         err = true;
                         break;
@@ -86,18 +96,58 @@ var MhDynamicFileComponent = /** @class */ (function (_super) {
             }
         }
     };
-    MhDynamicFileComponent.prototype.preview = function (path) {
+    /**
+     * @param {?} path
+     * @return {?}
+     */
+    MhDynamicFileComponent.prototype.preview = /**
+     * @param {?} path
+     * @return {?}
+     */
+    function (path) {
         this.dynamicLoaderService.download(path).subscribe();
     };
-    MhDynamicFileComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-dynamic-file',
-            templateUrl: './dynamic-file.component.html',
-            // changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [exports.FILE_INPUT_CONTROL_VALUE_ACCESSOR]
-        }),
-        __param(0, core_1.Inject('notify'))
-    ], MhDynamicFileComponent);
+    // clearEvent(): void {
+    //   this.files = null;
+    // };
+    MhDynamicFileComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-dynamic-file',
+                    template: "<div class=\"dynamic-input-wrapper\" layout=\"row\"> <mat-form-field tdFileDrop [multiple]=\"multiple\" (fileDrop)=\"value = $event\" (click)=\"fileInput.inputElement.click()\" flex> <input matInput [placeholder]=\"label\" [value]=\"value?.length ? ('共 ' + value?.length + ' 个文件') : value?.name\" readonly [required]=\"required\" /> </mat-form-field> <button mat-icon-button *ngIf=\"value?.path\" (click)=\"preview(value.path)\"> <mat-icon color=\"accent\">file_download</mat-icon> </button> <button mat-icon-button *ngIf=\"value\" (click)=\"value=null\"> <mat-icon color=\"warn\">cancel</mat-icon> </button> <td-file-input class=\"push-left-xs push-right-xs\" #fileInput [(ngModel)]=\"value\" [multiple]=\"multiple\" [accept]=\"config?.accept\" (select)=\"select($event)\"> <mat-icon color=\"accent\">folder</mat-icon> <span class=\"text-upper\">选择文件</span> </td-file-input> </div> ",
+                    // changeDetection: ChangeDetectionStrategy.OnPush,
+                    providers: [FILE_INPUT_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    MhDynamicFileComponent.ctorParameters = function () { return [
+        { type: undefined, decorators: [{ type: Inject, args: ['notify',] },] },
+        { type: MhDynamicLoaderService, },
+    ]; };
     return MhDynamicFileComponent;
-}(abstract_control_value_accesor_1.AbstractControlValueAccessor));
-exports.MhDynamicFileComponent = MhDynamicFileComponent;
+}(AbstractControlValueAccessor));
+export { MhDynamicFileComponent };
+function MhDynamicFileComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicFileComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicFileComponent.ctorParameters;
+    /** @type {?} */
+    MhDynamicFileComponent.prototype.control;
+    /** @type {?} */
+    MhDynamicFileComponent.prototype.label;
+    /** @type {?} */
+    MhDynamicFileComponent.prototype.config;
+    /** @type {?} */
+    MhDynamicFileComponent.prototype.required;
+    /** @type {?} */
+    MhDynamicFileComponent.prototype.multiple;
+    /** @type {?} */
+    MhDynamicFileComponent.prototype.maxlength;
+    /** @type {?} */
+    MhDynamicFileComponent.prototype.notificationService;
+    /** @type {?} */
+    MhDynamicFileComponent.prototype.dynamicLoaderService;
+}

@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,20 +8,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var material_1 = require("@angular/material");
-var base_table_1 = require("./base-table");
-var TableEntryComponent = /** @class */ (function (_super) {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, Inject, ChangeDetectorRef } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { TdDataTableService } from "@covalent/core";
+import { BaseTable } from "./base-table";
+var TableEntryComponent = (function (_super) {
     __extends(TableEntryComponent, _super);
     function TableEntryComponent(dataTableService, dialogRef, dialogData, cdr) {
         var _this = _super.call(this, dataTableService, cdr) || this;
@@ -34,51 +28,100 @@ var TableEntryComponent = /** @class */ (function (_super) {
         _this.selectedRows = [];
         return _this;
     }
-    TableEntryComponent.prototype.ngOnInit = function () {
-        var data = this.dialogData;
+    /**
+     * @return {?}
+     */
+    TableEntryComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
+        var /** @type {?} */ data = this.dialogData;
         this.label = data.label;
         this.data = data.data;
         this.selected = data.select === true ? true : false;
         this.multiple = data.multiple === true ? true : false;
         this.selectedRows = [];
-        var columns = data.columns || [];
+        var /** @type {?} */ columns = data.columns || [];
         // col初始化
         if (this.data.length <= 0) {
             return;
         }
-        var colMap = [];
+        var /** @type {?} */ colMap = [];
         columns.forEach(function (e) { return colMap.push(e.name); });
         for (var _i = 0, _a = Object.keys(this.data[0]); _i < _a.length; _i++) {
             var col = _a[_i];
             if (this.filterColumns.indexOf(col) < 0) {
-                var index = colMap.indexOf(col);
+                var /** @type {?} */ index = colMap.indexOf(col);
                 this.columns = this.columns.concat([
                     { name: col, label: index >= 0 ? columns[index].label : col }
                 ]);
             }
         }
-        for (var i = 0; i < this.data.length; i++) {
+        for (var /** @type {?} */ i = 0; i < this.data.length; i++) {
             this.data[i]._number = i + 1;
         }
         this.filter();
     };
-    TableEntryComponent.prototype.select = function (value) {
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    TableEntryComponent.prototype.select = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
         if (!this.multiple) {
             this.dialogRef.close(value.row);
         }
     };
-    TableEntryComponent.prototype.multSelect = function () {
+    /**
+     * @return {?}
+     */
+    TableEntryComponent.prototype.multSelect = /**
+     * @return {?}
+     */
+    function () {
         if (this.selectedRows.length > 0) {
             this.dialogRef.close(this.selectedRows);
         }
     };
-    TableEntryComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-table-entry',
-            templateUrl: './table-entry.component.html',
-        }),
-        __param(2, core_1.Inject(material_1.MAT_DIALOG_DATA))
-    ], TableEntryComponent);
+    TableEntryComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-table-entry',
+                    template: "<mat-dialog-content> <div layout=\"row\" layout-align=\"start center\" class=\"pad-left-sm pad-right-sm\"> <span *ngIf=\"!searchBox.searchVisible\" class=\"push-left-sm\"> <div style=\"font-size: 15px;margin-bottom:15px\">{{label}}</div> </span> <td-search-box #searchBox backIcon=\"arrow_back\" class=\"push-right-sm\" placeholder=\"在此输入搜索信息\" (searchDebounce)=\"search($event)\" flex> </td-search-box> </div> <mat-divider></mat-divider> <td-data-table #dataTable [data]=\"filteredData\" [columns]=\"columns\" [sortable]=\"true\" [sortBy]=\"sortBy\" [sortOrder]=\"sortOrder\" (sortChange)=\"sort($event)\" [selectable]=\"selected\" [multiple]=\"multiple\" (rowSelect)=\"select($event)\" [(ngModel)]=\"selectedRows\"> </td-data-table> <div class=\"mat-padding\" *ngIf=\"!dataTable.hasData\" layout=\"row\" layout-align=\"center center\"> <h3>暂无数据！</h3> </div> <td-paging-bar #pagingBar [total]=\"filteredTotal\" [pageSize]=\"pageSize\" (change)=\"page($event)\"> <span td-paging-bar-label hide-xs>每行显示:</span> <mat-select [style.width.px]=\"50\" [(ngModel)]=\"pageSize\"> <mat-option *ngFor=\"let size of [5,10,15,20,50]\" [value]=\"size\"> {{size}} </mat-option> </mat-select> <span>{{'第 '+pagingBar.range+' 条 共 '+pagingBar.total+' 条'}}</span> </td-paging-bar> </mat-dialog-content> <mat-dialog-actions align=\"end\"> <button *ngIf=\"multiple\" mat-button (click)=\"multSelect()\" class=\"btn-blue\">确定</button> <button mat-button mat-dialog-close class=\"btn-gray\">取消</button> </mat-dialog-actions> ",
+                },] },
+    ];
+    /** @nocollapse */
+    TableEntryComponent.ctorParameters = function () { return [
+        { type: TdDataTableService, },
+        { type: MatDialogRef, },
+        { type: undefined, decorators: [{ type: Inject, args: [MAT_DIALOG_DATA,] },] },
+        { type: ChangeDetectorRef, },
+    ]; };
     return TableEntryComponent;
-}(base_table_1.BaseTable));
-exports.TableEntryComponent = TableEntryComponent;
+}(BaseTable));
+export { TableEntryComponent };
+function TableEntryComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    TableEntryComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    TableEntryComponent.ctorParameters;
+    /** @type {?} */
+    TableEntryComponent.prototype.label;
+    /** @type {?} */
+    TableEntryComponent.prototype.filterColumns;
+    /** @type {?} */
+    TableEntryComponent.prototype.selected;
+    /** @type {?} */
+    TableEntryComponent.prototype.multiple;
+    /** @type {?} */
+    TableEntryComponent.prototype.selectedRows;
+    /** @type {?} */
+    TableEntryComponent.prototype.dialogRef;
+    /** @type {?} */
+    TableEntryComponent.prototype.dialogData;
+}

@@ -1,16 +1,13 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var index_1 = require("./dynamic-form/index");
-var index_2 = require("./step-form/index");
-var index_3 = require("./search-form/index");
-var MhFormsService = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Injectable } from "@angular/core";
+import { MatDialog } from "@angular/material";
+import { DynamicEntryComponent } from "./dynamic-form/index";
+import { StepEntryComponent } from "./step-form/index";
+import { SearchEntryComponent } from "./search-form/index";
+var MhFormsService = (function () {
     function MhFormsService(dialog) {
         this.dialog = dialog;
     }
@@ -18,11 +15,20 @@ var MhFormsService = /** @class */ (function () {
      * 打开动态表单
      * elements:动态表单ID
      * default:动态表单默认值(属性数等于组件数)
-     * @param opt
+     * @param {?} opt
      *
+     * @return {?}
      */
-    MhFormsService.prototype.openDynamicForm = function (opt) {
-        return this.dialog.open(index_1.DynamicEntryComponent, {
+    MhFormsService.prototype.openDynamicForm = /**
+     * 打开动态表单
+     * elements:动态表单ID
+     * default:动态表单默认值(属性数等于组件数)
+     * @param {?} opt
+     *
+     * @return {?}
+     */
+    function (opt) {
+        return this.dialog.open(DynamicEntryComponent, {
             width: opt.width || '70%',
             data: {
                 title: opt.title || '动态表单',
@@ -34,10 +40,16 @@ var MhFormsService = /** @class */ (function () {
     };
     /**
      * 打开步骤表单
-     * @param opt
+     * @param {?} opt
+     * @return {?}
      */
-    MhFormsService.prototype.openStepForm = function (opt) {
-        return this.dialog.open(index_2.StepEntryComponent, {
+    MhFormsService.prototype.openStepForm = /**
+     * 打开步骤表单
+     * @param {?} opt
+     * @return {?}
+     */
+    function (opt) {
+        return this.dialog.open(StepEntryComponent, {
             width: opt.width || '70%',
             data: {
                 title: opt.title || '步骤表单',
@@ -49,10 +61,16 @@ var MhFormsService = /** @class */ (function () {
     };
     /**
      * 打开查询表单
-     * @param opt
+     * @param {?} opt
+     * @return {?}
      */
-    MhFormsService.prototype.openSearchForm = function (opt) {
-        return this.dialog.open(index_3.SearchEntryComponent, {
+    MhFormsService.prototype.openSearchForm = /**
+     * 打开查询表单
+     * @param {?} opt
+     * @return {?}
+     */
+    function (opt) {
+        return this.dialog.open(SearchEntryComponent, {
             width: opt.width || '70%',
             data: {
                 title: opt.title || '查询表单',
@@ -62,9 +80,24 @@ var MhFormsService = /** @class */ (function () {
             }
         }).afterClosed().filter(function (_) { return _; });
     };
-    MhFormsService = __decorate([
-        core_1.Injectable()
-    ], MhFormsService);
+    MhFormsService.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    MhFormsService.ctorParameters = function () { return [
+        { type: MatDialog, },
+    ]; };
     return MhFormsService;
 }());
-exports.MhFormsService = MhFormsService;
+export { MhFormsService };
+function MhFormsService_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhFormsService.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhFormsService.ctorParameters;
+    /** @type {?} */
+    MhFormsService.prototype.dialog;
+}

@@ -1,17 +1,13 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var core_2 = require("@covalent/core");
-var Observable_1 = require("rxjs/Observable");
-require("rxjs/add/operator/debounceTime");
-require("rxjs/add/observable/fromEvent");
-var MhStepFormComponent = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, Input, ViewChildren, QueryList } from "@angular/core";
+import { StepState } from "@covalent/core";
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/operator/debounceTime";
+import "rxjs/add/observable/fromEvent";
+var MhStepFormComponent = (function () {
     function MhStepFormComponent() {
         var _this = this;
         this._forms = [];
@@ -19,14 +15,14 @@ var MhStepFormComponent = /** @class */ (function () {
         this.actives = [];
         this.disableds = [];
         this.states = [];
-        this.interval$ = Observable_1.Observable.interval()
+        this.interval$ = Observable.interval()
             .map(function (_) {
-            var forms = _this.dynamicForms.toArray();
-            var value = {};
-            var valid = true;
-            for (var i = 0; i < forms.length; i++) {
-                var form = forms[i];
-                var id = _this.forms[i].id;
+            var /** @type {?} */ forms = _this.dynamicForms.toArray();
+            var /** @type {?} */ value = {};
+            var /** @type {?} */ valid = true;
+            for (var /** @type {?} */ i = 0; i < forms.length; i++) {
+                var /** @type {?} */ form = forms[i];
+                var /** @type {?} */ id = _this.forms[i].id;
                 value[id] = form.value;
                 if (!form.valid) {
                     valid = false;
@@ -36,10 +32,17 @@ var MhStepFormComponent = /** @class */ (function () {
         }).subscribe(function (_) { _this.value = _.value; _this.valid = _.valid; });
     }
     Object.defineProperty(MhStepFormComponent.prototype, "forms", {
-        get: function () {
+        get: /**
+         * @return {?}
+         */
+        function () {
             return this._forms;
         },
-        set: function (v) {
+        set: /**
+         * @param {?} v
+         * @return {?}
+         */
+        function (v) {
             this._forms = v;
             this.initArr();
         },
@@ -47,13 +50,20 @@ var MhStepFormComponent = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(MhStepFormComponent.prototype, "default", {
-        get: function () {
+        get: /**
+         * @return {?}
+         */
+        function () {
             return this._default;
         },
-        set: function (v) {
-            var value = [];
-            for (var i = 0; i < this.forms.length; i++) {
-                var id = this.forms[i].id;
+        set: /**
+         * @param {?} v
+         * @return {?}
+         */
+        function (v) {
+            var /** @type {?} */ value = [];
+            for (var /** @type {?} */ i = 0; i < this.forms.length; i++) {
+                var /** @type {?} */ id = this.forms[i].id;
                 if (v) {
                     value[i] = v[id] || null;
                 }
@@ -66,57 +76,116 @@ var MhStepFormComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    MhStepFormComponent.prototype.initArr = function () {
+    /**
+     * @return {?}
+     */
+    MhStepFormComponent.prototype.initArr = /**
+     * @return {?}
+     */
+    function () {
         this.actives = [];
         this.disableds = [];
         this.states = [];
         this._default = [];
-        for (var i = 0; i < this._forms.length; i++) {
+        for (var /** @type {?} */ i = 0; i < this._forms.length; i++) {
             this.actives[i] = i === 0 ? true : false;
             this.disableds[i] = i === 0 ? false : true;
-            this.states[i] = i === 0 ? core_2.StepState.Required : core_2.StepState.None;
+            this.states[i] = i === 0 ? StepState.Required : StepState.None;
             this._default[i] = null;
         }
     };
-    MhStepFormComponent.prototype.pre = function (index, data) {
+    /**
+     * @param {?} index
+     * @param {?} data
+     * @return {?}
+     */
+    MhStepFormComponent.prototype.pre = /**
+     * @param {?} index
+     * @param {?} data
+     * @return {?}
+     */
+    function (index, data) {
         var _this = this;
         this.disableds[index - 1] = false;
         this.actives[index] = false;
         this.disableds[index] = true;
         setTimeout(function () { return _this.actives[index - 1] = true; });
-        this.states[index] = core_2.StepState.None;
-        this.states[index - 1] = core_2.StepState.Required;
+        this.states[index] = StepState.None;
+        this.states[index - 1] = StepState.Required;
     };
-    MhStepFormComponent.prototype.next = function (index, data) {
+    /**
+     * @param {?} index
+     * @param {?} data
+     * @return {?}
+     */
+    MhStepFormComponent.prototype.next = /**
+     * @param {?} index
+     * @param {?} data
+     * @return {?}
+     */
+    function (index, data) {
         var _this = this;
         this.disableds[index + 1] = false;
         this.actives[index] = false;
         this.disableds[index] = true;
         setTimeout(function () { return _this.actives[index + 1] = true; });
-        this.states[index] = core_2.StepState.Complete;
-        this.states[index + 1] = core_2.StepState.Required;
+        this.states[index] = StepState.Complete;
+        this.states[index + 1] = StepState.Required;
     };
-    MhStepFormComponent.prototype.ngOnDestroy = function () {
+    /**
+     * @return {?}
+     */
+    MhStepFormComponent.prototype.ngOnDestroy = /**
+     * @return {?}
+     */
+    function () {
         this.interval$.unsubscribe();
     };
-    __decorate([
-        core_1.ViewChildren('dynamicForm')
-    ], MhStepFormComponent.prototype, "dynamicForms", void 0);
-    __decorate([
-        core_1.Input()
-    ], MhStepFormComponent.prototype, "forms", null);
-    __decorate([
-        core_1.Input()
-    ], MhStepFormComponent.prototype, "default", null);
-    __decorate([
-        core_1.Input()
-    ], MhStepFormComponent.prototype, "mode", void 0);
-    MhStepFormComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-step-form',
-            templateUrl: './step-form.component.html',
-        })
-    ], MhStepFormComponent);
+    MhStepFormComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-step-form',
+                    template: "<td-steps [mode]=\"mode\"> <ng-template ngFor [ngForOf]=\"forms\" let-form let-index=\"index\" let-last=\"last\"> <td-step #step [sublabel]=\"'第 '+(index+1)+' 步'\" [active]=\"actives[index]\" [state]=\"states[index]\" [disabled]=\"disableds[index]\"> <mh-dynamic-form #dynamicForm [elements]=\"form.controls?form.controls:form\" [default]=\"default[index]\"> </mh-dynamic-form> <ng-template td-step-actions alian=\"end\"> <button *ngIf=\"index!==0\" mat-button (click)=\"pre(index,dynamicForm.value)\"><mat-icon color=\"warn\">chevron_left</mat-icon>上一步</button> <button *ngIf=\"!last\" [disabled]=\"!dynamicForm.valid\" mat-button (click)=\"next(index,dynamicForm.value)\"><mat-icon color=\"accent\">chevron_right</mat-icon>下一步</button> </ng-template> </td-step> </ng-template> </td-steps> ",
+                },] },
+    ];
+    /** @nocollapse */
+    MhStepFormComponent.ctorParameters = function () { return []; };
+    MhStepFormComponent.propDecorators = {
+        "dynamicForms": [{ type: ViewChildren, args: ['dynamicForm',] },],
+        "forms": [{ type: Input },],
+        "default": [{ type: Input },],
+        "mode": [{ type: Input },],
+    };
     return MhStepFormComponent;
 }());
-exports.MhStepFormComponent = MhStepFormComponent;
+export { MhStepFormComponent };
+function MhStepFormComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhStepFormComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhStepFormComponent.ctorParameters;
+    /** @type {!Object<string,!Array<{type: !Function, args: (undefined|!Array<?>)}>>} */
+    MhStepFormComponent.propDecorators;
+    /** @type {?} */
+    MhStepFormComponent.prototype.dynamicForms;
+    /** @type {?} */
+    MhStepFormComponent.prototype._forms;
+    /** @type {?} */
+    MhStepFormComponent.prototype._default;
+    /** @type {?} */
+    MhStepFormComponent.prototype.mode;
+    /** @type {?} */
+    MhStepFormComponent.prototype.actives;
+    /** @type {?} */
+    MhStepFormComponent.prototype.disableds;
+    /** @type {?} */
+    MhStepFormComponent.prototype.states;
+    /** @type {?} */
+    MhStepFormComponent.prototype.value;
+    /** @type {?} */
+    MhStepFormComponent.prototype.valid;
+    /** @type {?} */
+    MhStepFormComponent.prototype.interval$;
+}

@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,23 +8,44 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var material_1 = require("@angular/material");
-var moment_1 = require("../../../util/moment");
-var MhDateAdapter = /** @class */ (function (_super) {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { NativeDateAdapter } from "@angular/material";
+import { moment } from "../../../util/moment";
+var MhDateAdapter = (function (_super) {
     __extends(MhDateAdapter, _super);
     function MhDateAdapter() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    MhDateAdapter.prototype.format = function (date, displayFormat) {
-        return moment_1.moment(date).format('YYYY-MM-DD');
+    /**
+     * @param {?} date
+     * @param {?} displayFormat
+     * @return {?}
+     */
+    MhDateAdapter.prototype.format = /**
+     * @param {?} date
+     * @param {?} displayFormat
+     * @return {?}
+     */
+    function (date, displayFormat) {
+        return moment(date).format('YYYY-MM-DD');
     };
-    MhDateAdapter.prototype.parse = function (value) {
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    MhDateAdapter.prototype.parse = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
         if (typeof value === 'string' && value.length <= 0) {
             return null;
         }
-        return moment_1.moment(value).toDate();
+        return moment(value).toDate();
     };
     return MhDateAdapter;
-}(material_1.NativeDateAdapter));
-exports.MhDateAdapter = MhDateAdapter;
+}(NativeDateAdapter));
+export { MhDateAdapter };

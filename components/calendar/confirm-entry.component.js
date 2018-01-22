@@ -1,33 +1,53 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var material_1 = require("@angular/material");
-var ConfirmEntryComponent = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, Inject } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+var ConfirmEntryComponent = (function () {
     function ConfirmEntryComponent(dialogData, dialogRef) {
         this.dialogData = dialogData;
         this.dialogRef = dialogRef;
         this.actions = [];
         this.actions = this.dialogData.actions;
     }
-    ConfirmEntryComponent.prototype.close = function (key) {
+    /**
+     * @param {?} key
+     * @return {?}
+     */
+    ConfirmEntryComponent.prototype.close = /**
+     * @param {?} key
+     * @return {?}
+     */
+    function (key) {
         this.dialogRef.close(key);
     };
-    ConfirmEntryComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-confirm-entry',
-            templateUrl: './confirm-entry.component.html'
-        }),
-        __param(0, core_1.Inject(material_1.MAT_DIALOG_DATA))
-    ], ConfirmEntryComponent);
+    ConfirmEntryComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-confirm-entry',
+                    template: "<mat-dialog-content class=\"push-bottom-sm\"> <span>请选择要进行的操作</span> </mat-dialog-content> <mat-dialog-actions align=\"end\"> <div layout=\"row\"> <button flex mat-button mat-dialog-close>取消</button> <button flex mat-button *ngFor=\"let btn of actions\" (click)=\"close(btn.key)\" color=\"accent\">{{btn.label}}</button> </div> </mat-dialog-actions> "
+                },] },
+    ];
+    /** @nocollapse */
+    ConfirmEntryComponent.ctorParameters = function () { return [
+        { type: undefined, decorators: [{ type: Inject, args: [MAT_DIALOG_DATA,] },] },
+        { type: MatDialogRef, },
+    ]; };
     return ConfirmEntryComponent;
 }());
-exports.ConfirmEntryComponent = ConfirmEntryComponent;
+export { ConfirmEntryComponent };
+function ConfirmEntryComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    ConfirmEntryComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    ConfirmEntryComponent.ctorParameters;
+    /** @type {?} */
+    ConfirmEntryComponent.prototype.actions;
+    /** @type {?} */
+    ConfirmEntryComponent.prototype.dialogData;
+    /** @type {?} */
+    ConfirmEntryComponent.prototype.dialogRef;
+}

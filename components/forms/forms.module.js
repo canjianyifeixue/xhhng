@@ -1,42 +1,49 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var material_1 = require("@angular/material");
-var index_1 = require("../../services/index");
-var index_2 = require("./dynamic-form/index");
-var index_3 = require("./step-form/index");
-var index_4 = require("./search-form/index");
-var forms_service_1 = require("./forms.service");
-var MhFormsModule = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { MatDialogModule } from "@angular/material";
+import { ToolService } from "../../services/index";
+import { MhDynamicFormModule } from "./dynamic-form/index";
+import { MhStepFormModule } from "./step-form/index";
+import { MhSearchFormModule } from "./search-form/index";
+import { MhFormsService } from "./forms.service";
+var MhFormsModule = (function () {
     function MhFormsModule() {
     }
-    MhFormsModule = __decorate([
-        core_1.NgModule({
-            imports: [
-                common_1.CommonModule,
-                material_1.MatDialogModule,
-                index_2.MhDynamicFormModule,
-                index_3.MhStepFormModule,
-                index_4.MhSearchFormModule,
-            ],
-            exports: [
-                index_2.MhDynamicFormModule,
-                index_3.MhStepFormModule,
-                index_4.MhSearchFormModule,
-            ],
-            providers: [
-                forms_service_1.MhFormsService,
-                index_1.ToolService,
-            ]
-        })
-    ], MhFormsModule);
+    MhFormsModule.decorators = [
+        { type: NgModule, args: [{
+                    imports: [
+                        CommonModule,
+                        MatDialogModule,
+                        MhDynamicFormModule,
+                        MhStepFormModule,
+                        MhSearchFormModule,
+                    ],
+                    exports: [
+                        MhDynamicFormModule,
+                        MhStepFormModule,
+                        MhSearchFormModule,
+                    ],
+                    providers: [
+                        MhFormsService,
+                        ToolService,
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    MhFormsModule.ctorParameters = function () { return []; };
     return MhFormsModule;
 }());
-exports.MhFormsModule = MhFormsModule;
+export { MhFormsModule };
+function MhFormsModule_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhFormsModule.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhFormsModule.ctorParameters;
+}

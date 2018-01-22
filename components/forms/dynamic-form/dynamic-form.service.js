@@ -1,49 +1,60 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var dynamic_form_entity_1 = require("./dynamic-form.entity");
-var core_2 = require("@covalent/core");
-var Observable_1 = require("rxjs/Observable");
-var Subject_1 = require("rxjs/Subject");
-var dynamic_input_component_1 = require("./dynamic-elements/dynamic-input/dynamic-input.component");
-var dynamic_textarea_component_1 = require("./dynamic-elements/dynamic-textarea/dynamic-textarea.component");
-var dynamic_slide_toggle_component_1 = require("./dynamic-elements/dynamic-slide-toggle/dynamic-slide-toggle.component");
-var dynamic_checkbox_component_1 = require("./dynamic-elements/dynamic-checkbox/dynamic-checkbox.component");
-var dynamic_slider_component_1 = require("./dynamic-elements/dynamic-slider/dynamic-slider.component");
-var dynamic_select_component_1 = require("./dynamic-elements/dynamic-select/dynamic-select.component");
-var dynamic_datepicker_component_1 = require("./dynamic-elements/dynamic-datepicker/dynamic-datepicker.component");
-var dynamic_checkbox_group_component_1 = require("./dynamic-elements/dynamic-checkbox-group/dynamic-checkbox-group.component");
-var dynamic_chips_component_1 = require("./dynamic-elements/dynamic-chips/dynamic-chips.component");
-var dynamic_radio_component_1 = require("./dynamic-elements/dynamic-radio/dynamic-radio.component");
-var dynamic_dialog_select_component_1 = require("./dynamic-elements/dynamic-dialog-select/dynamic-dialog-select.component");
-var dynamic_data_form_component_1 = require("./dynamic-elements/dynamic-data-form/dynamic-data-form.component");
-var dynamic_file_component_1 = require("./dynamic-elements/dynamic-file/dynamic-file.component");
-var dynamic_rich_editor_component_1 = require("./dynamic-elements/dynamic-rich-editor/dynamic-rich-editor.component");
-var dynamic_code_editor_component_1 = require("./dynamic-elements/dynamic-code-editor/dynamic-code-editor.component");
-var dynamic_cascad_select_component_1 = require("./dynamic-elements/dynamic-cascad-select/dynamic-cascad-select.component");
-var dynamic_cascad_dialog_component_1 = require("./dynamic-elements/dynamic-cascad-dialog/dynamic-cascad-dialog.component");
-exports.DYNAMIC_ELEMENT_NAME_REGEX = /^[a-zA-Z]+[a-zA-Z0-9-_]*$/;
-var MhDynamicFormService = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Injectable } from "@angular/core";
+import { Validators, FormControl } from "@angular/forms";
+import { MhDynamicFormElement, MhDynamicFormType } from "./dynamic-form.entity";
+import { CovalentValidators } from "@covalent/core";
+import { Observable } from "rxjs/Observable";
+import { Subject } from "rxjs/Subject";
+import { MhDynamicLoaderService } from "./dynamic-loader.service";
+import { MhDynamicInputComponent } from "./dynamic-elements/dynamic-input/dynamic-input.component";
+import { MhDynamicTextareaComponent } from "./dynamic-elements/dynamic-textarea/dynamic-textarea.component";
+import { MhDynamicSlideToggleComponent } from "./dynamic-elements/dynamic-slide-toggle/dynamic-slide-toggle.component";
+import { MhDynamicCheckboxComponent } from "./dynamic-elements/dynamic-checkbox/dynamic-checkbox.component";
+import { MhDynamicSliderComponent } from "./dynamic-elements/dynamic-slider/dynamic-slider.component";
+import { MhDynamicSelectComponent } from "./dynamic-elements/dynamic-select/dynamic-select.component";
+import { MhDynamicDatepickerComponent } from "./dynamic-elements/dynamic-datepicker/dynamic-datepicker.component";
+import { MhDynamicCheckboxGroupComponent } from "./dynamic-elements/dynamic-checkbox-group/dynamic-checkbox-group.component";
+import { MhDynamicChipsComponent } from "./dynamic-elements/dynamic-chips/dynamic-chips.component";
+import { MhDynamicRadioComponent } from "./dynamic-elements/dynamic-radio/dynamic-radio.component";
+import { MhDynamicDialogSelectComponent } from "./dynamic-elements/dynamic-dialog-select/dynamic-dialog-select.component";
+import { MhDynamicDataFormComponent } from "./dynamic-elements/dynamic-data-form/dynamic-data-form.component";
+import { MhDynamicFileComponent } from "./dynamic-elements/dynamic-file/dynamic-file.component";
+import { MhDynamicRichEditorComponent } from "./dynamic-elements/dynamic-rich-editor/dynamic-rich-editor.component";
+import { MhDynamicCodeEditorComponent } from "./dynamic-elements/dynamic-code-editor/dynamic-code-editor.component";
+import { MhDynamicCascadSelectComponent } from "./dynamic-elements/dynamic-cascad-select/dynamic-cascad-select.component";
+import { MhDynamicCascadDialogComponent } from "./dynamic-elements/dynamic-cascad-dialog/dynamic-cascad-dialog.component";
+export var /** @type {?} */ DYNAMIC_ELEMENT_NAME_REGEX = /^[a-zA-Z]+[a-zA-Z0-9-_]*$/;
+var MhDynamicFormService = (function () {
     function MhDynamicFormService(dynamicLoaderService) {
         this.dynamicLoaderService = dynamicLoaderService;
-        this.subject = new Subject_1.Subject();
+        this.subject = new Subject();
     }
-    MhDynamicFormService.prototype.registerChange = function () {
+    /**
+     * @return {?}
+     */
+    MhDynamicFormService.prototype.registerChange = /**
+     * @return {?}
+     */
+    function () {
         return this.subject.asObservable();
     };
     /**
      * 此方法会验证动态表单元素 [name] 是否有效.
      * 如果验证不通过将会抛出异常.
+     * @param {?} name
+     * @return {?}
      */
-    MhDynamicFormService.prototype.validateDynamicElementName = function (name) {
-        if (!exports.DYNAMIC_ELEMENT_NAME_REGEX.test(name)) {
+    MhDynamicFormService.prototype.validateDynamicElementName = /**
+     * 此方法会验证动态表单元素 [name] 是否有效.
+     * 如果验证不通过将会抛出异常.
+     * @param {?} name
+     * @return {?}
+     */
+    function (name) {
+        if (!DYNAMIC_ELEMENT_NAME_REGEX.test(name)) {
             throw new Error("\u52A8\u6001\u8868\u5355\u5143\u7D20name\u5C5E\u6027: \"" + name + "\" \u9A8C\u8BC1\u65E0\u6548.");
         }
     };
@@ -51,50 +62,59 @@ var MhDynamicFormService = /** @class */ (function () {
      * 从 [type] 中获取渲染的动态表单元素
      * [MhDynamicFormElement | MhDynamicFormType]
      * 如果遇到不存在或者不支持的类型将会抛出异常.
+     * @param {?} element
+     * @return {?}
      */
-    MhDynamicFormService.prototype.getDynamicElement = function (element) {
+    MhDynamicFormService.prototype.getDynamicElement = /**
+     * 从 [type] 中获取渲染的动态表单元素
+     * [MhDynamicFormElement | MhDynamicFormType]
+     * 如果遇到不存在或者不支持的类型将会抛出异常.
+     * @param {?} element
+     * @return {?}
+     */
+    function (element) {
         switch (element) {
-            case dynamic_form_entity_1.MhDynamicFormType.Text:
-            case dynamic_form_entity_1.MhDynamicFormType.Number:
-            case dynamic_form_entity_1.MhDynamicFormElement.Input:
-            case dynamic_form_entity_1.MhDynamicFormElement.Time:
-            case dynamic_form_entity_1.MhDynamicFormElement.Password:
-                return dynamic_input_component_1.MhDynamicInputComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.Textarea:
-                return dynamic_textarea_component_1.MhDynamicTextareaComponent;
-            case dynamic_form_entity_1.MhDynamicFormType.Boolean:
-            case dynamic_form_entity_1.MhDynamicFormElement.SlideToggle:
-                return dynamic_slide_toggle_component_1.MhDynamicSlideToggleComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.Checkbox:
-                return dynamic_checkbox_component_1.MhDynamicCheckboxComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.Slider:
-                return dynamic_slider_component_1.MhDynamicSliderComponent;
-            case dynamic_form_entity_1.MhDynamicFormType.Date:
-            case dynamic_form_entity_1.MhDynamicFormElement.DatePicker:
-                return dynamic_datepicker_component_1.MhDynamicDatepickerComponent;
-            case dynamic_form_entity_1.MhDynamicFormType.ENUM:
-            case dynamic_form_entity_1.MhDynamicFormElement.Select:
-                return dynamic_select_component_1.MhDynamicSelectComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.CheckboxGroup:
-                return dynamic_checkbox_group_component_1.MhDynamicCheckboxGroupComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.Chips:
-                return dynamic_chips_component_1.MhDynamicChipsComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.Radio:
-                return dynamic_radio_component_1.MhDynamicRadioComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.DialogSelect:
-                return dynamic_dialog_select_component_1.MhDynamicDialogSelectComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.DataForm:
-                return dynamic_data_form_component_1.MhDynamicDataFormComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.File:
-                return dynamic_file_component_1.MhDynamicFileComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.RichEditor:
-                return dynamic_rich_editor_component_1.MhDynamicRichEditorComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.CodeEditor:
-                return dynamic_code_editor_component_1.MhDynamicCodeEditorComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.CascadSelect:
-                return dynamic_cascad_select_component_1.MhDynamicCascadSelectComponent;
-            case dynamic_form_entity_1.MhDynamicFormElement.CascadDialog:
-                return dynamic_cascad_dialog_component_1.MhDynamicCascadDialogComponent;
+            case MhDynamicFormType.Text:
+            case MhDynamicFormType.Number:
+            case MhDynamicFormElement.Input:
+            case MhDynamicFormElement.Time:
+            case MhDynamicFormElement.Password:
+                return MhDynamicInputComponent;
+            case MhDynamicFormElement.Textarea:
+                return MhDynamicTextareaComponent;
+            case MhDynamicFormType.Boolean:
+            case MhDynamicFormElement.SlideToggle:
+                return MhDynamicSlideToggleComponent;
+            case MhDynamicFormElement.Checkbox:
+                return MhDynamicCheckboxComponent;
+            case MhDynamicFormElement.Slider:
+                return MhDynamicSliderComponent;
+            case MhDynamicFormType.Date:
+            case MhDynamicFormElement.DatePicker:
+                return MhDynamicDatepickerComponent;
+            case MhDynamicFormType.ENUM:
+            case MhDynamicFormElement.Select:
+                return MhDynamicSelectComponent;
+            case MhDynamicFormElement.CheckboxGroup:
+                return MhDynamicCheckboxGroupComponent;
+            case MhDynamicFormElement.Chips:
+                return MhDynamicChipsComponent;
+            case MhDynamicFormElement.Radio:
+                return MhDynamicRadioComponent;
+            case MhDynamicFormElement.DialogSelect:
+                return MhDynamicDialogSelectComponent;
+            case MhDynamicFormElement.DataForm:
+                return MhDynamicDataFormComponent;
+            case MhDynamicFormElement.File:
+                return MhDynamicFileComponent;
+            case MhDynamicFormElement.RichEditor:
+                return MhDynamicRichEditorComponent;
+            case MhDynamicFormElement.CodeEditor:
+                return MhDynamicCodeEditorComponent;
+            case MhDynamicFormElement.CascadSelect:
+                return MhDynamicCascadSelectComponent;
+            case MhDynamicFormElement.CascadDialog:
+                return MhDynamicCascadDialogComponent;
             default:
                 throw new Error("\u9519\u8BEF: \u7C7B\u578B " + element + " \u4E0D\u5B58\u5728\u6216\u4E0D\u662F\u652F\u6301\u7684\u7C7B\u578B.");
         }
@@ -103,35 +123,44 @@ var MhDynamicFormService = /** @class */ (function () {
      * 获取表单元素默认的flex属性
      * [MhDynamicFormElement | MhDynamicFormType].
      * 如果遇到不存在或者不支持的类型将会抛出异常.
+     * @param {?} element
+     * @return {?}
      */
-    MhDynamicFormService.prototype.getDefaultElementFlex = function (element) {
+    MhDynamicFormService.prototype.getDefaultElementFlex = /**
+     * 获取表单元素默认的flex属性
+     * [MhDynamicFormElement | MhDynamicFormType].
+     * 如果遇到不存在或者不支持的类型将会抛出异常.
+     * @param {?} element
+     * @return {?}
+     */
+    function (element) {
         switch (element) {
-            case dynamic_form_entity_1.MhDynamicFormType.Text:
-            case dynamic_form_entity_1.MhDynamicFormType.Number:
-            case dynamic_form_entity_1.MhDynamicFormElement.Slider:
-            case dynamic_form_entity_1.MhDynamicFormElement.Time:
-            case dynamic_form_entity_1.MhDynamicFormElement.Input:
-            case dynamic_form_entity_1.MhDynamicFormElement.Password:
-            case dynamic_form_entity_1.MhDynamicFormType.ENUM:
-            case dynamic_form_entity_1.MhDynamicFormElement.Select:
-            case dynamic_form_entity_1.MhDynamicFormElement.File:
-            case dynamic_form_entity_1.MhDynamicFormType.Date:
-            case dynamic_form_entity_1.MhDynamicFormElement.DatePicker:
-            case dynamic_form_entity_1.MhDynamicFormElement.Chips:
-            case dynamic_form_entity_1.MhDynamicFormElement.CheckboxGroup:
-            case dynamic_form_entity_1.MhDynamicFormElement.Radio:
-            case dynamic_form_entity_1.MhDynamicFormElement.DialogSelect:
+            case MhDynamicFormType.Text:
+            case MhDynamicFormType.Number:
+            case MhDynamicFormElement.Slider:
+            case MhDynamicFormElement.Time:
+            case MhDynamicFormElement.Input:
+            case MhDynamicFormElement.Password:
+            case MhDynamicFormType.ENUM:
+            case MhDynamicFormElement.Select:
+            case MhDynamicFormElement.File:
+            case MhDynamicFormType.Date:
+            case MhDynamicFormElement.DatePicker:
+            case MhDynamicFormElement.Chips:
+            case MhDynamicFormElement.CheckboxGroup:
+            case MhDynamicFormElement.Radio:
+            case MhDynamicFormElement.DialogSelect:
                 return 45;
-            case dynamic_form_entity_1.MhDynamicFormElement.Textarea:
-            case dynamic_form_entity_1.MhDynamicFormElement.DataForm:
-            case dynamic_form_entity_1.MhDynamicFormElement.RichEditor:
-            case dynamic_form_entity_1.MhDynamicFormElement.CodeEditor:
-            case dynamic_form_entity_1.MhDynamicFormElement.CascadSelect:
-            case dynamic_form_entity_1.MhDynamicFormElement.CascadDialog:
+            case MhDynamicFormElement.Textarea:
+            case MhDynamicFormElement.DataForm:
+            case MhDynamicFormElement.RichEditor:
+            case MhDynamicFormElement.CodeEditor:
+            case MhDynamicFormElement.CascadSelect:
+            case MhDynamicFormElement.CascadDialog:
                 return 95;
-            case dynamic_form_entity_1.MhDynamicFormType.Boolean:
-            case dynamic_form_entity_1.MhDynamicFormElement.Checkbox:
-            case dynamic_form_entity_1.MhDynamicFormElement.SlideToggle:
+            case MhDynamicFormType.Boolean:
+            case MhDynamicFormElement.Checkbox:
+            case MhDynamicFormElement.SlideToggle:
                 return 20;
             default:
                 throw new Error("\u9519\u8BEF: \u7C7B\u578B " + element + " \u4E0D\u5B58\u5728\u6216\u4E0D\u662F\u652F\u6301\u7684\u7C7B\u578B.");
@@ -139,35 +168,57 @@ var MhDynamicFormService = /** @class */ (function () {
     };
     /**
      * 从 [MhDynamicFormElementConfig] 创建动态表单元素.
+     * @param {?} config
+     * @return {?}
      */
-    MhDynamicFormService.prototype.createFormControl = function (config) {
-        var validator = this.createValidators(config);
-        return new forms_1.FormControl(config.default, validator, this.asyncValidator(config));
+    MhDynamicFormService.prototype.createFormControl = /**
+     * 从 [MhDynamicFormElementConfig] 创建动态表单元素.
+     * @param {?} config
+     * @return {?}
+     */
+    function (config) {
+        var /** @type {?} */ validator = this.createValidators(config);
+        return new FormControl(config.default, validator, this.asyncValidator(config));
         // return new FormControl(config.default, validator);
     };
     /**
      * 从 [MhDynamicFormElementConfig] 创建动态表单校验器.
+     * @param {?} config
+     * @return {?}
      */
-    MhDynamicFormService.prototype.createValidators = function (config) {
-        var validator = null;
+    MhDynamicFormService.prototype.createValidators = /**
+     * 从 [MhDynamicFormElementConfig] 创建动态表单校验器.
+     * @param {?} config
+     * @return {?}
+     */
+    function (config) {
+        var /** @type {?} */ validator = null;
         if (config.required) {
-            validator = forms_1.Validators.required;
+            validator = Validators.required;
         }
         if (config.max || config.max === 0) {
-            validator = forms_1.Validators.compose([validator, core_2.CovalentValidators.max(config.max)]);
+            validator = Validators.compose([validator, CovalentValidators.max(config.max)]);
         }
         if (config.min || config.min === 0) {
-            validator = forms_1.Validators.compose([validator, core_2.CovalentValidators.min(config.min)]);
+            validator = Validators.compose([validator, CovalentValidators.min(config.min)]);
         }
         return validator;
     };
-    MhDynamicFormService.prototype.asyncValidator = function (config) {
+    /**
+     * @param {?} config
+     * @return {?}
+     */
+    MhDynamicFormService.prototype.asyncValidator = /**
+     * @param {?} config
+     * @return {?}
+     */
+    function (config) {
         var _this = this;
         return function (control) {
-            var value = control.value;
-            var obj = {};
+            var /** @type {?} */ value = control.value;
+            var /** @type {?} */ obj = {};
             obj[config.name] = value;
-            var formData = Object.assign({}, (control.parent || { value: undefined }).value, obj);
+            var /** @type {?} */ formData = Object.assign({}, (control.parent || { value: undefined }).value, obj);
             if (config.validateUrl && (value || value === false)) {
                 return _this.dynamicLoaderService.validate(config.validateUrl, value)
                     .map(function (_) {
@@ -177,13 +228,30 @@ var MhDynamicFormService = /** @class */ (function () {
             }
             else {
                 _this.subject.next({ value: formData, control: config });
-                return Observable_1.Observable.of(null);
+                return Observable.of(null);
             }
         };
     };
-    MhDynamicFormService = __decorate([
-        core_1.Injectable()
-    ], MhDynamicFormService);
+    MhDynamicFormService.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    MhDynamicFormService.ctorParameters = function () { return [
+        { type: MhDynamicLoaderService, },
+    ]; };
     return MhDynamicFormService;
 }());
-exports.MhDynamicFormService = MhDynamicFormService;
+export { MhDynamicFormService };
+function MhDynamicFormService_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    MhDynamicFormService.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    MhDynamicFormService.ctorParameters;
+    /** @type {?} */
+    MhDynamicFormService.prototype.subject;
+    /** @type {?} */
+    MhDynamicFormService.prototype.dynamicLoaderService;
+}

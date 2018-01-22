@@ -1,20 +1,19 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var TreeViewComponent = /** @class */ (function () {
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+/**
+ * 树结构相关方法封装
+ */
+var TreeViewComponent = (function () {
     function TreeViewComponent() {
         this.icon = 'adjust';
         this.nodes = [];
         this.multiple = false;
         this.nodeName = 'name';
         this.nodeIcon = 'icon';
-        this.selected = new core_1.EventEmitter();
+        this.selected = new EventEmitter();
         this.options = {
             animateExpand: true,
             animateSpeed: 5,
@@ -22,26 +21,46 @@ var TreeViewComponent = /** @class */ (function () {
     }
     /**
      * 选择树形节点
-     * @param event 所选择的属性节点
+     * @param {?} event 所选择的属性节点
+     * @return {?}
      */
-    TreeViewComponent.prototype.select = function (event) {
+    TreeViewComponent.prototype.select = /**
+     * 选择树形节点
+     * @param {?} event 所选择的属性节点
+     * @return {?}
+     */
+    function (event) {
         this.selected.emit(event.node.data);
     };
     /**
      * 根据当前节点的状态来检测改变父节点，子节点的状态
-     * @param node
-     * @param
+     * @param {?} node
+     * @param {?} $event
+     * @return {?}
      */
-    TreeViewComponent.prototype.check = function (node, $event) {
+    TreeViewComponent.prototype.check = /**
+     * 根据当前节点的状态来检测改变父节点，子节点的状态
+     * @param {?} node
+     * @param {?} $event
+     * @return {?}
+     */
+    function (node, $event) {
         this.updateChildNodesCheckBox(node, $event.checked);
         this.updateParentNodesCheckBox(node.parent);
     };
     /**
      * 更新子节点的复选框
-     * @param node 当前节点
-     * @param checked 勾选状态
+     * @param {?} node 当前节点
+     * @param {?} checked 勾选状态
+     * @return {?}
      */
-    TreeViewComponent.prototype.updateChildNodesCheckBox = function (node, checked) {
+    TreeViewComponent.prototype.updateChildNodesCheckBox = /**
+     * 更新子节点的复选框
+     * @param {?} node 当前节点
+     * @param {?} checked 勾选状态
+     * @return {?}
+     */
+    function (node, checked) {
         var _this = this;
         node.data.checked = checked;
         if (node.children) {
@@ -50,11 +69,18 @@ var TreeViewComponent = /** @class */ (function () {
     };
     /**
      * 更新父节点的复选框
+     * @param {?} node
+     * @return {?}
      */
-    TreeViewComponent.prototype.updateParentNodesCheckBox = function (node) {
+    TreeViewComponent.prototype.updateParentNodesCheckBox = /**
+     * 更新父节点的复选框
+     * @param {?} node
+     * @return {?}
+     */
+    function (node) {
         if (node && node.level > 0 && node.children) {
-            var allChildChecked = true;
-            var noChildChecked = true;
+            var /** @type {?} */ allChildChecked = true;
+            var /** @type {?} */ noChildChecked = true;
             for (var _i = 0, _a = node.children; _i < _a.length; _i++) {
                 var child = _a[_i];
                 if (!child.data.checked) {
@@ -79,33 +105,47 @@ var TreeViewComponent = /** @class */ (function () {
             this.updateParentNodesCheckBox(node.parent);
         }
     };
-    __decorate([
-        core_1.Input()
-    ], TreeViewComponent.prototype, "icon", void 0);
-    __decorate([
-        core_1.Input()
-    ], TreeViewComponent.prototype, "nodes", void 0);
-    __decorate([
-        core_1.Input()
-    ], TreeViewComponent.prototype, "multiple", void 0);
-    __decorate([
-        core_1.Input()
-    ], TreeViewComponent.prototype, "nodeName", void 0);
-    __decorate([
-        core_1.Input()
-    ], TreeViewComponent.prototype, "nodeIcon", void 0);
-    __decorate([
-        core_1.Output()
-    ], TreeViewComponent.prototype, "selected", void 0);
-    TreeViewComponent = __decorate([
-        core_1.Component({
-            selector: 'mh-tree-view',
-            templateUrl: './tree-view.component.html',
-        })
-        /**
-         * 树结构相关方法封装
-         */
-    ], TreeViewComponent);
+    TreeViewComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'mh-tree-view',
+                    template: "<tree-root [nodes]=\"nodes\" (activate)=\"select($event)\" [options]=\"options\"> <ng-template #treeNodeTemplate let-node let-index=\"index\"> <div layout=\"row\" layout-align=\" center\"> <mat-checkbox *ngIf=\"multiple\" [checked]=\"node.data.checked\" [indeterminate]=\"node.data.indeterminate\" (change)=\"check(node, $event)\" color=\"primary\"> <span>&nbsp;</span> </mat-checkbox> <mat-icon color=\"accent\">{{node.data[nodeIcon] || icon}}</mat-icon> <span class=\"push-left-xs\">{{ node.data[nodeName] }}</span> </div> </ng-template> </tree-root> ",
+                },] },
+    ];
+    /** @nocollapse */
+    TreeViewComponent.ctorParameters = function () { return []; };
+    TreeViewComponent.propDecorators = {
+        "icon": [{ type: Input },],
+        "nodes": [{ type: Input },],
+        "multiple": [{ type: Input },],
+        "nodeName": [{ type: Input },],
+        "nodeIcon": [{ type: Input },],
+        "selected": [{ type: Output },],
+    };
     return TreeViewComponent;
 }());
-exports.TreeViewComponent = TreeViewComponent;
+export { TreeViewComponent };
+function TreeViewComponent_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    TreeViewComponent.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    TreeViewComponent.ctorParameters;
+    /** @type {!Object<string,!Array<{type: !Function, args: (undefined|!Array<?>)}>>} */
+    TreeViewComponent.propDecorators;
+    /** @type {?} */
+    TreeViewComponent.prototype.icon;
+    /** @type {?} */
+    TreeViewComponent.prototype.nodes;
+    /** @type {?} */
+    TreeViewComponent.prototype.multiple;
+    /** @type {?} */
+    TreeViewComponent.prototype.nodeName;
+    /** @type {?} */
+    TreeViewComponent.prototype.nodeIcon;
+    /** @type {?} */
+    TreeViewComponent.prototype.selected;
+    /** @type {?} */
+    TreeViewComponent.prototype.options;
+}
