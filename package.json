@@ -17,7 +17,7 @@
   },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/canjianyifeixue/xhhng"
+        "url": "git+https://github.com/canjianyifeixue/xhhng.git"
     },
     "author": "canjian <985992884@qq.com>",
     "keywords": [
