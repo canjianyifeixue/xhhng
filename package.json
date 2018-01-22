@@ -1,6 +1,6 @@
 {
     "name": "xhhng",
-    "version": "1.0.2",
+    "version": "1.0.3",
 	 "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -17,7 +17,7 @@
   },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/canjianyifeixue/xhhng.git"
+        "url": "git+https://github.com/canjianyifeixue/xhhng/tree/master/dist"
     },
     "author": "canjian <985992884@qq.com>",
     "keywords": [
@@ -25,7 +25,7 @@
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/canjianyifeixue/xhhng"
+        "url": "https://github.com/canjianyifeixue/xhhng/tree/master/dist"
     },
     "main": "mng.umd.js",
     "module": "mng.js",
