@@ -1,0 +1,30 @@
+import { OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+import { CascadSelectService } from './cascad-select.service';
+export declare class MhCascadSelectEntryComponent implements OnInit {
+    private dialogRef;
+    private cascadSelectService;
+    private dialogData;
+    data: any;
+    selections: any[];
+    selectedData: any[];
+    title: string;
+    async: boolean;
+    keyField: string;
+    valueField: string;
+    depth: number;
+    selectDepth: number;
+    fuse: any;
+    backupSelections: any;
+    searchTerm: string;
+    fuseOptions: any;
+    constructor(dialogRef: MatDialogRef<MhCascadSelectEntryComponent>, cascadSelectService: CascadSelectService, dialogData: any);
+    ngOnInit(): void;
+    initSelection(): void;
+    initAsyncSelection(): void;
+    loadAsyncSelection(arr: any[]): void;
+    select(selection: any): void;
+    initFuse(): void;
+    clear(): void;
+    pop(index: number): void;
+}

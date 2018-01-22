@@ -1,0 +1,47 @@
+import { EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { HttpUtilService } from '../../services/index';
+import { NotificationService } from '../../services/index';
+import { MatDialog, NativeDateAdapter, DateAdapter } from '@angular/material';
+export declare class MonthViewComponent {
+    private httpUtilService;
+    private notificationService;
+    private cdr;
+    private dialog;
+    viewDate: any;
+    _events: any[];
+    events: any;
+    selectEvent: EventEmitter<any>;
+    monthStatus: EventEmitter<any>;
+    WEEK: string[];
+    TIME: any[];
+    STATUS: any[];
+    days: any[];
+    map: any[];
+    viewStart: number;
+    viewEnd: number;
+    color: {
+        [key: string]: any;
+    };
+    rowHeadColor: string;
+    rowHeadBgColor: string;
+    columnColor: string;
+    columnBgColor: string;
+    disabledCellColor: string;
+    disabledCellBgColor: string;
+    constructor(httpUtilService: HttpUtilService, notificationService: NotificationService, cdr: ChangeDetectorRef, dialog: MatDialog, dateAdapter: DateAdapter<NativeDateAdapter>);
+    detectChanges(): void;
+    init(): void;
+    change(date: any): void;
+    preMonth(): void;
+    nextMonth(): void;
+    convertEvent(data: any): void;
+    findDateIndex(date: Date | number | string): number;
+    findTimeIndex(time: Date | number | string): number;
+    getColor(dateIndex: number, timeIndex: number): string;
+    getTooltip(dateIndex: number, timeIndex: number): string;
+    getMenu(dateIndex: number, timeIndex: number): any[];
+    openConfim(index: number, x: number): void;
+    changeStatus(dateIndex: number, timeIndex: number, status: string): void;
+    enabledMonth(): void;
+    disabledMonth(): void;
+}

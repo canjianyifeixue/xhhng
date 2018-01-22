@@ -1,0 +1,57 @@
+import { ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl } from '@angular/forms';
+import { AbstractControlValueAccessor } from '../abstract-control-value-accesor';
+import { Subscription } from 'rxjs/Subscription';
+export interface SummernoteOptions {
+    airMode?: boolean;
+    buttons?: any;
+    callbacks?: any;
+    codemirror?: any;
+    colors?: any;
+    dialogsInBody?: boolean;
+    dialogsFade?: boolean;
+    direction?: string;
+    disableDragAndDrop?: boolean;
+    focus?: boolean;
+    fontNames?: string[];
+    fontNamesIgnoreCheck?: string[];
+    height?: number;
+    hint?: any;
+    icons?: any;
+    insertTableMaxSize?: any;
+    keyMap?: any;
+    lang?: string;
+    lineHeights?: string[];
+    minHeight?: number;
+    maxHeight?: number;
+    maximumImageFileSize?: any;
+    modules?: any;
+    popover?: any;
+    placeholder?: string;
+    shortcuts?: boolean;
+    styleTags?: any[];
+    styleWithSpan?: boolean;
+    tabsize?: number;
+    tableClassName?: string;
+    textareaAutoSync?: boolean;
+    toolbar?: any;
+    tooltip?: boolean;
+    width?: number;
+}
+export declare const RICH_EDITOR_INPUT_CONTROL_VALUE_ACCESSOR: any;
+export declare class MhDynamicRichEditorComponent extends AbstractControlValueAccessor implements ControlValueAccessor, OnInit, OnDestroy {
+    private element;
+    control: FormControl;
+    label: string;
+    options: SummernoteOptions;
+    config: any;
+    interval$: Subscription;
+    _value: string;
+    value: string;
+    constructor(element: ElementRef);
+    refresh(value: any): void;
+    isEmpty(): boolean;
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    getCode(): string;
+}
