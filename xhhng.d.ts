@@ -39,7 +39,7 @@ export { MhDynamicLoaderService as ɵk } from './components/forms/dynamic-form/d
 export { MhFormDesignComponent as ɵp } from './components/forms/dynamic-form/form-design.component';
 export { SearchFormComponent as ɵa } from './components/forms/search-form/search-form.component';
 export { MhStepFormComponent as ɵcd } from './components/forms/step-form/step-form.component';
-export { SimpleTableComponent as ɵcf } from './components/table/simple-table.component';
+// export { SimpleTableComponent as ɵcf } from './components/table/simple-table.component';
 export { TableEntryComponent as ɵce } from './components/table/table-entry.component';
 export { TaskFormComponent as ɵci } from './components/task/task-form.component';
 export { MhTaskComponent as ɵcg } from './components/task/task.component';
