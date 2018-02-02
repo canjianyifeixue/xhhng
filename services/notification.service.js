@@ -17,9 +17,9 @@ var NotificationService = /** @class */ (function () {
         this.dialogService = dialogService;
         this._snackBarConfig = new material_1.MatSnackBarConfig();
         this._snackBarConfig.duration = 4000;
-        // Notification.requestPermission().then((_: any) => {
-        //   if (_ === 'denied') { throw new Error('目前无法接收任何通知'); }
-        // });
+        Notification.requestPermission().then(function (_) {
+            // if (_ === 'denied') { throw new Error('目前无法接收任何通知'); }
+        });
     }
     NotificationService.prototype.success = function (message) {
         this.open(message, ['bgc-green-A700']);
@@ -95,18 +95,18 @@ var NotificationService = /** @class */ (function () {
      * @param icon   图标
      * @param click  点击事件的回调
      */
-    // public notify(title: string, body?: string, icon?: string, click?: (e: Event) => void) {
-    //   const payload = new Notification(title, {
-    //     body,
-    //     icon: icon || 'assets/img/favicon.png'
-    //   });
-    //   if (click) {
-    //     payload.onclick = (e) => {
-    //       click(e);
-    //       payload.close();
-    //     };
-    //   }
-    // }
+    NotificationService.prototype.notify = function (title, body, icon, click) {
+        var payload = new Notification(title, {
+            body: body,
+            icon: icon || 'assets/img/favicon.png'
+        });
+        if (click) {
+            payload.onclick = function (e) {
+                click(e);
+                payload.close();
+            };
+        }
+    };
     NotificationService.prototype.open = function (message, cssClass) {
         this._snackBarConfig.extraClasses = cssClass;
         this.snackBar.open(message, '关闭', this._snackBarConfig);
