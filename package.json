@@ -1,66 +1,81 @@
 {
+  "_from": "xhhng@latest",
+  "_id": "xhhng@1.1.3",
+  "_inBundle": false,
+  "_integrity": "sha512-4uvJGt2axTGySTEHNjTKGJ2SsMHGp+L/mLdals7hFl8zefGto8QmpGbFy7xW89t7HdJ+qt6TrfGumQS8GEhPSA==",
+  "_location": "/xhhng",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "xhhng@latest",
     "name": "xhhng",
-    "version": "1.1.2",
-	 "scripts": {
-    "build": "gulp build",
-    "build:watch": "gulp",
-    "docs": "npm run docs:build",
-    "docs:build": "compodoc -p tsconfig.json -n mng -d docs --hideGenerator",
-    "docs:serve": "npm run docs:build -- -s",
-    "docs:watch": "npm run docs:build -- -s -w",
-    "lint": "tslint -t stylish --project tsconfig.json src/**/*.ts",
-    "lite": "lite-server",
-    "playground:build": "tsc -p playground -w",
-    "playground": "concurrently \"npm run build:watch\" \"npm run playground:build\" \"npm run lite\"",
-    "test": "tsc && karma start",
-    "pub": "npm publish ./dist"
+    "escapedName": "xhhng",
+    "rawSpec": "latest",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/canjianyifeixue/xhhng.git"
-    },
-    "author": "canjian <985992884@qq.com>",
-    "keywords": [
-        "angular"
-    ],
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/canjianyifeixue/xhhng"
-    },
-    "main": "xhhng.umd.js",
-    "module": "xhhng.js",
-    "jsnext:main": "xhhng.js",
-    "typings": "xhhng.d.ts",
-    "peerDependencies": {
-        "@angular/animations": ">= 4.0.0",
-        "@angular/common": ">= 4.0.0",
-        "@angular/core": ">= 4.0.0",
-        "@angular/forms": ">= 4.0.0",
-        "@angular/http": ">= 4.0.0",
-        "@angular/cdk": ">= 5.0.0-rc.0",
-        "@angular/material": ">= 5.0.0-rc.0",
-        "@angular/flex-layout": ">= 2.0.0-beta.8",
-        "@covalent/core": ">= 1.0.0-rc.0",
-        "bootstrap": ">= 4.0.0-beta.2",
-        "jquery": ">= 3.2.1",
-        "summernote": ">= 0.8.8",
-        "angular-tree-component": ">= 6.0.0",
-        "fuse.js": ">= 3.2.0",
-        "html2canvas": ">= 0.5.0-beta4",
-        "jsesc": ">= 2.5.1",
-        "jspdf": ">= 1.3.5",
-        "moment": ">= 2.19.2",
-        "ng2-dragula": ">= 1.5.0",
-        "ng2-file-upload": ">= 1.3.0",
-        "urijs": ">= 1.19.0",
-        "codemirror": ">= 5.32.0"
-    },
-    "homepage": "https://github.com/canjianyifeixue/xhhng#readme",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "description": "",
-    "devDependencies": {
-        "@angular/cli": "^1.6.4"
-    }
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/xhhng/-/xhhng-1.1.2.tgz",
+  "_shasum": "21f2d8db740be9eb3a6752519e490531e8a57a06",
+  "_spec": "xhhng@latest",
+  "_where": "D:\\GitWorkSpace\\MAIHE\\fxl-web",
+  "author": {
+    "name": "canjian",
+    "email": "985992884@qq.com"
+  },
+  "bugs": {
+    "url": "https://github.com/canjianyifeixue/xhhng"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "",
+  "devDependencies": {
+    "@angular/cli": "^1.6.4"
+  },
+  "homepage": "https://github.com/canjianyifeixue/xhhng#readme",
+  "jsnext:main": "xhhng.js",
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "main": "xhhng.umd.js",
+  "module": "xhhng.js",
+  "name": "xhhng",
+  "peerDependencies": {
+    "@angular/animations": ">= 4.0.0",
+    "@angular/common": ">= 4.0.0",
+    "@angular/core": ">= 4.0.0",
+    "@angular/forms": ">= 4.0.0",
+    "@angular/http": ">= 4.0.0",
+    "@angular/cdk": ">= 5.0.0-rc.0",
+    "@angular/material": ">= 5.0.0-rc.0",
+    "@angular/flex-layout": ">= 2.0.0-beta.8",
+    "@covalent/core": ">= 1.0.0-rc.0",
+    "bootstrap": ">= 4.0.0-beta.2",
+    "jquery": ">= 3.2.1",
+    "summernote": ">= 0.8.8",
+    "angular-tree-component": ">= 6.0.0",
+    "fuse.js": ">= 3.2.0",
+    "html2canvas": ">= 0.5.0-beta4",
+    "jsesc": ">= 2.5.1",
+    "jspdf": ">= 1.3.5",
+    "moment": ">= 2.19.2",
+    "ng2-dragula": ">= 1.5.0",
+    "ng2-file-upload": ">= 1.3.0",
+    "urijs": ">= 1.19.0",
+    "codemirror": ">= 5.32.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canjianyifeixue/xhhng.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "typings": "xhhng.d.ts",
+  "version": "1.1.3"
 }
