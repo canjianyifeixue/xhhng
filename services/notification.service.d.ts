@@ -45,6 +45,5 @@ export declare class NotificationService {
      * @param icon   图标
      * @param click  点击事件的回调
      */
-    notify(title: string, body?: string, icon?: string, click?: (e: Event) => void): void;
     private open(message, cssClass);
 }

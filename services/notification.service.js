@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var material_1 = require("@angular/material");
 /**
  * 封装各种消息推送方法
  */
@@ -14,8 +15,8 @@ var NotificationService = /** @class */ (function () {
     function NotificationService(snackBar, dialogService) {
         this.snackBar = snackBar;
         this.dialogService = dialogService;
-        // this._snackBarConfig = new MatSnackBarConfig();
-        // this._snackBarConfig.duration = 4000;
+        this._snackBarConfig = new material_1.MatSnackBarConfig();
+        this._snackBarConfig.duration = 4000;
         // Notification.requestPermission().then((_: any) => {
         //   if (_ === 'denied') { throw new Error('目前无法接收任何通知'); }
         // });
@@ -86,6 +87,29 @@ var NotificationService = /** @class */ (function () {
             cancelButton: cancelButton,
             acceptButton: acceptButton,
         }).afterClosed();
+    };
+    /**
+     *  弹出通知
+     * @param title  显示标题
+     * @param body   内容
+     * @param icon   图标
+     * @param click  点击事件的回调
+     */
+    // public notify(title: string, body?: string, icon?: string, click?: (e: Event) => void) {
+    //   const payload = new Notification(title, {
+    //     body,
+    //     icon: icon || 'assets/img/favicon.png'
+    //   });
+    //   if (click) {
+    //     payload.onclick = (e) => {
+    //       click(e);
+    //       payload.close();
+    //     };
+    //   }
+    // }
+    NotificationService.prototype.open = function (message, cssClass) {
+        this._snackBarConfig.extraClasses = cssClass;
+        this.snackBar.open(message, '关闭', this._snackBarConfig);
     };
     NotificationService = __decorate([
         core_1.Injectable()
