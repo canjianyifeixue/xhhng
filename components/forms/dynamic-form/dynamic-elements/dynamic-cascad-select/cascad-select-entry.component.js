@@ -1,15 +1,21 @@
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-import { Component, Inject } from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { CascadSelectService } from "./cascad-select.service";
-import { fusejs as Fuse } from "../../../../../util/fuse-js";
-import { Observable } from "rxjs/Observable";
-var MhCascadSelectEntryComponent = (function () {
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var material_1 = require("@angular/material");
+var cascad_select_service_1 = require("./cascad-select.service");
+var fuse_js_1 = require("../../../../../util/fuse-js");
+var Observable_1 = require("rxjs/Observable");
+var MhCascadSelectEntryComponent = /** @class */ (function () {
     function MhCascadSelectEntryComponent(dialogRef, cascadSelectService, dialogData) {
-        // this.cascadSelectService = new CascadSelectService(http);
         this.dialogRef = dialogRef;
         this.cascadSelectService = cascadSelectService;
         this.dialogData = dialogData;
@@ -32,14 +38,9 @@ var MhCascadSelectEntryComponent = (function () {
             minMatchCharLength: 2,
             keys: [],
         };
+        // this.cascadSelectService = new CascadSelectService(http);
     }
-    /**
-     * @return {?}
-     */
-    MhCascadSelectEntryComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    MhCascadSelectEntryComponent.prototype.ngOnInit = function () {
         this.data = this.dialogData.selections;
         this.title = this.dialogData.title;
         this.async = this.dialogData.async;
@@ -55,13 +56,7 @@ var MhCascadSelectEntryComponent = (function () {
             this.initSelection();
         }
     };
-    /**
-     * @return {?}
-     */
-    MhCascadSelectEntryComponent.prototype.initSelection = /**
-     * @return {?}
-     */
-    function () {
+    MhCascadSelectEntryComponent.prototype.initSelection = function () {
         var _this = this;
         this.cascadSelectService.initSelection(this.data, this.selectedData, this.keyField).subscribe(function (_) {
             _this.selections = _.selections;
@@ -69,13 +64,7 @@ var MhCascadSelectEntryComponent = (function () {
             _this.initFuse();
         });
     };
-    /**
-     * @return {?}
-     */
-    MhCascadSelectEntryComponent.prototype.initAsyncSelection = /**
-     * @return {?}
-     */
-    function () {
+    MhCascadSelectEntryComponent.prototype.initAsyncSelection = function () {
         var _this = this;
         this.cascadSelectService.initAsyncSelection(this.selectedData, this.data, this.selections, this.selectDepth, this.keyField, this.valueField).subscribe(function (_) {
             _this.selectDepth = _.selectDepth;
@@ -84,15 +73,7 @@ var MhCascadSelectEntryComponent = (function () {
             _this.initFuse();
         });
     };
-    /**
-     * @param {?} arr
-     * @return {?}
-     */
-    MhCascadSelectEntryComponent.prototype.loadAsyncSelection = /**
-     * @param {?} arr
-     * @return {?}
-     */
-    function (arr) {
+    MhCascadSelectEntryComponent.prototype.loadAsyncSelection = function (arr) {
         var _this = this;
         this.cascadSelectService.loadAsyncSelection(arr, this.selectedData, this.selections, this.selectDepth, this.keyField, this.valueField).subscribe(function (_) {
             _this.selectDepth = _.selectDepth;
@@ -101,15 +82,7 @@ var MhCascadSelectEntryComponent = (function () {
             _this.initFuse();
         });
     };
-    /**
-     * @param {?} selection
-     * @return {?}
-     */
-    MhCascadSelectEntryComponent.prototype.select = /**
-     * @param {?} selection
-     * @return {?}
-     */
-    function (selection) {
+    MhCascadSelectEntryComponent.prototype.select = function (selection) {
         var _this = this;
         this.selectedData = this.selectedData.concat([{ key: selection[this.keyField], value: selection[this.valueField] }]);
         if (this.async && this.depth > this.selectDepth + 1) {
@@ -126,18 +99,12 @@ var MhCascadSelectEntryComponent = (function () {
         this.dialogRef.close(this.selectedData);
         this.selectedData = [];
     };
-    /**
-     * @return {?}
-     */
-    MhCascadSelectEntryComponent.prototype.initFuse = /**
-     * @return {?}
-     */
-    function () {
+    MhCascadSelectEntryComponent.prototype.initFuse = function () {
         var _this = this;
         this.fuseOptions.keys = ['key', 'value'];
         this.backupSelections = this.selections.slice();
-        this.fuse = new Fuse(this.selections, this.fuseOptions);
-        Observable.interval()
+        this.fuse = new fuse_js_1.fusejs(this.selections, this.fuseOptions);
+        Observable_1.Observable.interval()
             .map(function (_) { return _this.searchTerm; })
             .distinctUntilChanged()
             .subscribe(function (_) {
@@ -149,29 +116,15 @@ var MhCascadSelectEntryComponent = (function () {
             }
         });
     };
-    /**
-     * @return {?}
-     */
-    MhCascadSelectEntryComponent.prototype.clear = /**
-     * @return {?}
-     */
-    function () {
+    MhCascadSelectEntryComponent.prototype.clear = function () {
         this.selectedData = [];
         this.dialogRef.close([]);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    MhCascadSelectEntryComponent.prototype.pop = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    MhCascadSelectEntryComponent.prototype.pop = function (index) {
         this.selectedData = this.selectedData.slice(0, index);
         if (this.async) {
-            var /** @type {?} */ arr = [this.cascadSelectService.loadAsyncData(this.data, 0)];
-            for (var /** @type {?} */ i = 0; i < this.selectedData.length; i++) {
+            var arr = [this.cascadSelectService.loadAsyncData(this.data, 0)];
+            for (var i = 0; i < this.selectedData.length; i++) {
                 arr.push(this.cascadSelectService.loadAsyncData(this.data, i + 1, this.selectedData[i].key));
             }
             this.loadAsyncSelection(arr);
@@ -180,60 +133,14 @@ var MhCascadSelectEntryComponent = (function () {
             this.initSelection();
         }
     };
-    MhCascadSelectEntryComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'mh-cascad-select-entry',
-                    template: "<h4 mat-dialog-title>{{title}}</h4> <mat-dialog-content> <div layout=\"row\" class=\"entry-search\"> <mat-form-field flex=\"90\"> <input matInput type=\"text\" [(ngModel)]=\"searchTerm\" placeholder=\"请输入查询条件\"> </mat-form-field> <button flex=\"10\" flex-offset=\"10\" mat-icon-button matTooltip=\"清空\" matTooltipPosition=\"above\" (click)=\"clear()\"><mat-icon color=\"warn\">close</mat-icon></button> </div> <div> <span *ngFor=\"let s of selectedData;let last=last;let index=index\"> <a (click)=\"pop(index)\">{{s.value}}</a> <span *ngIf=\"!last\">/</span> </span> </div> <mat-nav-list> <td-virtual-scroll-container [style.height.vh]=\"52\" [data]=\"selections\"> <ng-template let-selection=\"row\" let-index=\"index\" let-last=\"last\" tdVirtualScrollRow> <mat-list-item (click)=\"select(selection)\"> {{selection[valueField]}} </mat-list-item> <mat-divider *ngIf=\"!last\"></mat-divider> </ng-template> </td-virtual-scroll-container> </mat-nav-list> </mat-dialog-content> ",
-                    providers: [CascadSelectService]
-                },] },
-    ];
-    /** @nocollapse */
-    MhCascadSelectEntryComponent.ctorParameters = function () { return [
-        { type: MatDialogRef, },
-        { type: CascadSelectService, },
-        { type: undefined, decorators: [{ type: Inject, args: [MAT_DIALOG_DATA,] },] },
-    ]; };
+    MhCascadSelectEntryComponent = __decorate([
+        core_1.Component({
+            selector: 'mh-cascad-select-entry',
+            templateUrl: './cascad-select-entry.component.html',
+            providers: [cascad_select_service_1.CascadSelectService]
+        }),
+        __param(2, core_1.Inject(material_1.MAT_DIALOG_DATA))
+    ], MhCascadSelectEntryComponent);
     return MhCascadSelectEntryComponent;
 }());
-export { MhCascadSelectEntryComponent };
-function MhCascadSelectEntryComponent_tsickle_Closure_declarations() {
-    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
-    MhCascadSelectEntryComponent.decorators;
-    /**
-     * @nocollapse
-     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
-     */
-    MhCascadSelectEntryComponent.ctorParameters;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.data;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.selections;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.selectedData;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.title;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.async;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.keyField;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.valueField;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.depth;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.selectDepth;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.fuse;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.backupSelections;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.searchTerm;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.fuseOptions;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.dialogRef;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.cascadSelectService;
-    /** @type {?} */
-    MhCascadSelectEntryComponent.prototype.dialogData;
-}
+exports.MhCascadSelectEntryComponent = MhCascadSelectEntryComponent;
