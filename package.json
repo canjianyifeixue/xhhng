@@ -1,6 +1,5 @@
 {
   "_from": "xhhng@latest",
-  "_id": "xhhng@1.2.1",
   "_inBundle": false,
   "_integrity": "sha512-4uvJGt2axTGySTEHNjTKGJ2SsMHGp+L/mLdals7hFl8zefGto8QmpGbFy7xW89t7HdJ+qt6TrfGumQS8GEhPSA==",
   "_location": "/xhhng",
@@ -23,16 +22,12 @@
   "_shasum": "21f2d8db740be9eb3a6752519e490531e8a57a06",
   "_spec": "xhhng@latest",
   "_where": "D:\\GitWorkSpace\\MAIHE\\fxl-web",
-  "author": {
-    "name": "canjian",
-    "email": "985992884@qq.com"
-  },
+  "author": "canjian <985992884@qq.com>",
   "bugs": {
     "url": "https://github.com/canjianyifeixue/xhhng"
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "",
   "devDependencies": {
     "@angular/cli": "^1.6.4"
   },
@@ -77,5 +72,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "typings": "xhhng.d.ts",
-  "version": "1.2.1"
+  "version": "1.2.1",
+  "description": ""
 }
